@@ -6,9 +6,8 @@
 {% capture updated_formatted %}{{ page.updated_formatted }}{{ post.updated_formatted }}{% endcapture %}
 {% capture was_updated %}{{ updated | size }}{% endcapture %}
 
-{% if has_date != '0' %}
-  {% capture time %}<time datetime="{{ date | datetime | date_to_xmlschema }}" pubdate{% if updated %} data-updated="true"{% endif %}>{{ date_formatted }}</time>{% endcapture %}
-{% endif %}
+
+<time datetime="{{ post.date | date: "%b %-d, %Y" }}" pubdate data-updated="true">{{ post.date | date: "%b %-d, %Y" }}</time>
 
 {% if was_updated != '0' %}
   {% capture updated %}<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated">Updated {{ updated_formatted }}</time>{% endcapture %}
