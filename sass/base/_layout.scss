@@ -3,6 +3,7 @@ $max-width: 1000px;
 *{
 	margin: 0;
 	padding: 0;
+	box-sizing: initial;
 }
 body{
 	font-family: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", Arial, sans-serif;
@@ -10,7 +11,7 @@ body{
 	font-weight: 300;
 	line-height: 1.5;
 	background: $color-background;
-    color: $color-gray01;
+  color: $color-gray01;
 	@media screen and (max-width: 1040px){
 		margin: 0 20px;
 	}
@@ -29,7 +30,7 @@ h2{
 	font-weight:300;
 }
 h3{
-	
+
 	font-size: 20px;
 	line-height: 1.2;
 	margin: 1.2em 0 0 0;
@@ -68,4 +69,20 @@ a:hover {
 	@media screen and (max-width: 1040px){
 		width: 100%;
 	}
+}
+#content {
+	min-height: 500px;
+	@media screen and (max-width: 1040px){
+		margin: 0 20px;
+		min-height: inherit;
+	}
+	@media screen and (max-width: 600px){
+		font-size: 13px;
+		margin: 0 20px;
+		min-height: inherit;
+	}
+}
+a:focus, a:active {
+	outline: none;
+	text-decoration: none;
 }
