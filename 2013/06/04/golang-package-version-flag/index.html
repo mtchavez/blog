@@ -1,0 +1,242 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Golang Package Version Flag  | El Chavo</title>
+
+<meta name="author" content="El Chavo"> 
+
+<meta name="description" content="
+	Golang Package Version Flag
+	So you’ve built your first service using Go and have it deployed out into your
+production environment. With cross co..."> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="El Chavo" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	<link rel="stylesheet" href="/stylesheets/styles/solarized_dark.css">
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">El Chavo</a></h1>
+<h4>Code, Thoughts And Ideas</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<!-- <li><a href="/about">About</a></li> -->
+	<!-- <li><a href="/portfolio">Portfolio</a></li> -->
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<!-- <li><a href="/about">About</a></li> -->
+	<!-- <li><a href="/portfolio">Portfolio</a></li> -->
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:http://blog.el-chavez.me">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Golang Package Version Flag</h2>
+	<div class="entry-content"><p>So you’ve built your first service using Go and have it deployed out into your
+production environment. With cross compiling built into Go it’s easy and almost
+trivial to build a new binary of your code and deploy updates. But what happens
+when you need to know what version of your code is where or how can you easily
+verify your new binary was deployed.</p>
+
+<p>There is a built in library in Go that handles flag parsing, the flag package.
+Using the flag package is straight forward and allows us to use flags to pass
+to our binary to print a version out.</p>
+
+<p>First lets start with a main package that imports the flag package.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello from main()&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>If you have the file in your $GOROOT as main.go then run <code>go build main.go</code>
+and after running <code>./main</code> you should see:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./main
+Hello from main<span class="o">()</span></code></pre></div>
+
+<p>So what did the <code>flag.Parse()</code> line do for us? Well it actually looked to
+parse any flags passed to the program. Since we did not pass anything it does
+not have to do any work here. Now lets add a version flag to parse so we can
+print the version of our program.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">AppVersion</span> <span class="p">=</span> <span class="s">&quot;1.0.0 beta&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">version</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;prints current app version&quot;</span><span class="p">)</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="k">if</span> <span class="o">*</span><span class="nx">version</span> <span class="p">{</span>
+      <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">AppVersion</span><span class="p">)</span>
+      <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello from main()&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>We first start by adding a definition of our version flag. It will be a boolean
+flag with a name of v, a default of false and a description of what our flag means.
+Next we call <code>flag.Parse()</code> to look for any flags passed into our program.
+After parsing our version variable will have a value if we passed a <code>-v</code> to our
+program when running it. Run your program again, this time passing in our <code>-v</code>
+flag, and you should see the version string printed out and the program exist.</p>
+
+<p>Some things to try out:</p>
+
+<ul>
+  <li>What happens if you don’t pass in the <code>-v</code> flag?</li>
+  <li>What is the difference if you change the default value for the flag from false to true?</li>
+  <li>If you pass a flag other than <code>-v</code> what is the output of the program?</li>
+</ul>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+<time datetime="" pubdate data-updated="true"></time>
+
+
+</div>
+	
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    El Chavo
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+
+<script src="/javascripts/highlight.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+</body>
+</html>

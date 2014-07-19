@@ -4,7 +4,7 @@
   <title><![CDATA[El Chavo]]></title>
   <link href="http://blog.el-chavez.me/atom.xml" rel="self"/>
   <link href="http://blog.el-chavez.me/"/>
-  <updated>2014-07-19T09:35:12-07:00</updated>
+  <updated>2014-07-19T11:15:01-07:00</updated>
   <id>http://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -14,34 +14,378 @@
 
   
   <entry>
-    <title type="html"><![CDATA[This is a sample post]]></title>
-    <link href="http://blog.el-chavez.me/2014/04/22/a-sample-post/"/>
-    <updated>2014-04-22T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2014/04/22/a-sample-post</id>
-    <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <title type="html"><![CDATA[Golang Documenting Package Examples]]></title>
+    <link href="http://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples/"/>
+    <updated>2013-08-29T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples</id>
+    <content type="html"><![CDATA[<p><a href="http://golang.org/">Go</a> has been gaining a lot of popularity recently. With a
+lot of the success stories centered on the performance gains switching from
+other languages. For me a lot of the smaller features, that shows an attention
+to detail, which makes it enjoyable to code in. These details are also what
+will help the Golang community grow as well. One of these details is the built
+in documentation into the language.</p>
 
-<!-- More -->
+<p>There is a built in <code>go doc</code> command with the language where you can view your
+package documentation locally by running an http server to serve your docs.
+<a href="http://godoc.org/">GoDoc</a> is the main hosting for open source packages that
+will build docs for your package by doing a <code>go get</code> and generating docs.
+Locally you can run <code>go doc</code> from your package to display the docs in your
+terminal.</p>
 
-<h2 id="this-is-a-sample-header">this is a sample header</h2>
+<div class="highlight"><pre><code class="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
+<span class="err">$</span> <span class="k">go</span> <span class="nx">doc</span>
+<span class="nx">PACKAGE</span> <span class="nx">DOCUMENTATION</span>
 
-<p>Here’s some sample code:</p>
+<span class="kn">package</span> <span class="nx">statsite</span>
+    <span class="kn">import</span> <span class="s">&quot;github.com/mtchavez/go-statsite/statsite&quot;</span>
 
-<pre lang="ruby"><code>def test
-  @answer = 6*9
-  if @answer != 42  # this should never happen
-    raise "Oh no, not again."
-  else
-    print "Don't panic."
-end
-</code></pre>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>The footnote <a href="http://www.example.com">content</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+
+<span class="nx">VARIABLES</span>
+
+<span class="kd">var</span> <span class="nx">MTypes</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">&quot;kv&quot;</span><span class="p">,</span>
+    <span class="s">&quot;g&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ms&quot;</span><span class="p">,</span>
+    <span class="s">&quot;c&quot;</span><span class="p">,</span>
+    <span class="s">&quot;s&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="nx">TYPES</span>
+
+<span class="kd">type</span> <span class="nx">Client</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Conn</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span>
+    <span class="c1">// contains filtered or unexported fields</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span> <span class="nx">NewClient</span><span class="p">(</span><span class="nx">addr</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">client</span> <span class="o">*</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span>
+
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">)</span> <span class="nx">Emit</span><span class="p">(</span><span class="nx">m</span> <span class="nx">Messenger</span><span class="p">)</span> <span class="p">(</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">)</span> <span class="nx">Emitter</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">ok</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span></code></pre></div>
+
+<p>Or you can view all the packages in your <code>$GOSRC</code> directory as well as the
+standard library code in your browser by running <code>godoc -http=:6060</code>. Then
+visit <code>localhost:6060</code> in your browser. This looks the same as golang.org you
+may notice. Click on <code>Packages</code> and find the package you are looking for. This
+all comes built into the language itself.</p>
+
+<p>If you have spent any time using go, browsed the standard library docs, used
+an open source go project you may have notice a <code>Examples</code> in docs. These
+examples are one of the details I mentioned that add to the language and help
+grow a community. <a href="http://golang.org/pkg/time/#pkg-examples">Here</a> is an
+example of the built in <code>time</code> package examples. The novel thing about this is
+it is just the built in examples from the Go source that get generated by <code>go
+doc</code> from the language itself. There is no extra documentation package or
+custom manages site.</p>
+
+<p>So you have an open source project, or some internal go project, that you want
+to make life easier for others to pick up and understand. Lets write an
+example for them to understand how to use your package. Lets say you have a
+fibonacci number generator package. And you want to show someone how to use it
+with an example. Lets add a <code>$GOPATH/src/fib</code> directory with a <code>fib.go</code> main
+package with the following:</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;fmt&quot;</span>
+  <span class="s">&quot;os&quot;</span>
+  <span class="s">&quot;strconv&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">n</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Since we’ll be expecting others to use our package we’ll want to test it works
+as well as document how to use it. With examples we can do both in one shot.
+In our same <code>$GOPATH/src/fib</code> directory create a <code>fib_test.go</code> file. Lets add
+our example test.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">Example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">output</span> <span class="kt">int</span>
+  <span class="nx">output</span> <span class="p">=</span> <span class="nx">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Fibonacci of %v is %v\n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">output</span><span class="p">)</span>
+  <span class="nx">output</span> <span class="p">=</span> <span class="nx">fib</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Fibonacci of %v is %v\n&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">output</span><span class="p">)</span>
+  <span class="c1">// Output:</span>
+  <span class="c1">// Fibonnacci of 10 is 55</span>
+  <span class="c1">// Fibonnacci of 20 is 6765</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Now from your <code>fib/</code> directory run <code>go test</code> and you should see some similar
+output:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+PASS
+ok    fib 0.023s</code></pre></div>
+
+<p>This allowed us to both test our fibonacci package and show someone else an
+example how to use it. If the output changed or we broke our package our tests
+should fail as well.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+--- FAIL: Example <span class="o">(</span>80.68us<span class="o">)</span>
+got:
+Fibonacci of 10 is 55
+Fibonacci of 20 is 6765
+want:
+Fibonacci of 10 is 55
+Fibonacci of 20 is 55
+FAIL
+<span class="nb">exit </span>status 1
+FAIL  fib 0.018s</code></pre></div>
+
+<p>Simple enough. What if you have a struct where you are calling a function off
+of and want to show how one would use the function. The principal is the same
+except we change our <code>Example()</code> function name in our test. If we change our
+<code>fib.go</code> to this:</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;fmt&quot;</span>
+  <span class="s">&quot;os&quot;</span>
+  <span class="s">&quot;strconv&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">FibStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">num</span>    <span class="kt">int</span>
+  <span class="nx">result</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="nx">n</span> <span class="p">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">n</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">FibStruct</span><span class="p">)</span> <span class="nx">Calculate</span><span class="p">(</span><span class="nx">num</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">f</span><span class="p">.</span><span class="nx">num</span> <span class="p">=</span> <span class="nx">num</span>
+  <span class="nx">f</span><span class="p">.</span><span class="nx">result</span> <span class="p">=</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Then we can add an example on how to use our new <code>Calculate()</code> method in
+<code>fib_test.go</code>.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">f</span> <span class="o">:=</span> <span class="nx">FibStruct</span><span class="p">{}</span>
+  <span class="nx">f</span><span class="p">.</span><span class="nx">Calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Fibonacci of %v is %v\n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
+
+  <span class="nx">f</span><span class="p">.</span><span class="nx">Calculate</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Fibonacci of %v is %v\n&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
+  <span class="c1">// Output:</span>
+  <span class="c1">// Fibonacci of 10 is 55</span>
+  <span class="c1">// Fibonacci of 20 is 6765</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Running the tests again with <code>go test</code> should show everything passing. Last
+part to this is viewing your examples via <code>go doc</code> or on
+<a href="http://godoc.org">GoDoc</a>. You can view this example at <a href="http://godoc.org/github.com/mtchavez/fib-go-example">fib-go-
+example</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Golang Timed Function Wrapper]]></title>
+    <link href="http://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper/"/>
+    <updated>2013-08-09T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper</id>
+    <content type="html"><![CDATA[<p>Wrote this quick and probably dirty wrapper for timing functions in Go.
+<code>TimedReturn</code> returns an <code>interface{}</code> in case a return value is needed
+from whatever you are wrapping.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;fmt&quot;</span>
+  <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">wrapped</span> <span class="kd">func</span><span class="p">()</span>
+<span class="kd">type</span> <span class="nx">wrappedReturn</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span>
+
+<span class="kd">func</span> <span class="nx">Timed</span><span class="p">(</span><span class="nx">fn</span> <span class="nx">wrapped</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">fn</span><span class="p">()</span>
+  <span class="nx">end</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Time: %d, Key: %s\n&quot;</span><span class="p">,</span> <span class="nx">end</span><span class="o">-</span><span class="nx">start</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">TimedReturn</span><span class="p">(</span><span class="nx">fn</span> <span class="nx">wrappedReturn</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+  <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">resp</span> <span class="o">:=</span> <span class="nx">fn</span><span class="p">()</span>
+  <span class="nx">end</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Time: %d, Key: %s]n&quot;</span><span class="p">,</span> <span class="nx">end</span><span class="o">-</span><span class="nx">start</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">resp</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">fn</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello from wrapped function!&quot;</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">Timed</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="s">&quot;go.playground&quot;</span><span class="p">)</span>
+
+  <span class="nx">fn2</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello from wrapped function with return!&quot;</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">returned</span> <span class="o">:=</span> <span class="nx">TimedReturn</span><span class="p">(</span><span class="nx">fn2</span><span class="p">,</span> <span class="s">&quot;go.playground&quot;</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;TimedReturn got:&quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.([]</span><span class="kt">int</span><span class="p">))</span>
+<span class="p">}</span></code></pre></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Golang Package Version Flag]]></title>
+    <link href="http://blog.el-chavez.me/2013/06/04/golang-package-version-flag/"/>
+    <updated>2013-06-04T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/06/04/golang-package-version-flag</id>
+    <content type="html"><![CDATA[<p>So you’ve built your first service using Go and have it deployed out into your
+production environment. With cross compiling built into Go it’s easy and almost
+trivial to build a new binary of your code and deploy updates. But what happens
+when you need to know what version of your code is where or how can you easily
+verify your new binary was deployed.</p>
+
+<p>There is a built in library in Go that handles flag parsing, the flag package.
+Using the flag package is straight forward and allows us to use flags to pass
+to our binary to print a version out.</p>
+
+<p>First lets start with a main package that imports the flag package.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello from main()&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>If you have the file in your $GOROOT as main.go then run <code>go build main.go</code>
+and after running <code>./main</code> you should see:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./main
+Hello from main<span class="o">()</span></code></pre></div>
+
+<p>So what did the <code>flag.Parse()</code> line do for us? Well it actually looked to
+parse any flags passed to the program. Since we did not pass anything it does
+not have to do any work here. Now lets add a version flag to parse so we can
+print the version of our program.</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">AppVersion</span> <span class="p">=</span> <span class="s">&quot;1.0.0 beta&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">version</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;prints current app version&quot;</span><span class="p">)</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="k">if</span> <span class="o">*</span><span class="nx">version</span> <span class="p">{</span>
+      <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">AppVersion</span><span class="p">)</span>
+      <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Hello from main()&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<p>We first start by adding a definition of our version flag. It will be a boolean
+flag with a name of v, a default of false and a description of what our flag means.
+Next we call <code>flag.Parse()</code> to look for any flags passed into our program.
+After parsing our version variable will have a value if we passed a <code>-v</code> to our
+program when running it. Run your program again, this time passing in our <code>-v</code>
+flag, and you should see the version string printed out and the program exist.</p>
+
+<p>Some things to try out:</p>
+
+<ul>
+  <li>What happens if you don’t pass in the <code>-v</code> flag?</li>
+  <li>What is the difference if you change the default value for the flag from false to true?</li>
+  <li>If you pass a flag other than <code>-v</code> what is the output of the program?</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Golang Current File Path]]></title>
+    <link href="http://blog.el-chavez.me/2013/05/17/golang-current-file-path/"/>
+    <updated>2013-05-17T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/05/17/golang-current-file-path</id>
+    <content type="html"><![CDATA[<p>I recently needed to get the current file absolute path from a go file.
+You first need to get the runtime package which is a part of Go</p>
+
+<div class="highlight"><pre><code class="go"><span class="kn">import</span> <span class="s">&quot;runtime&quot;</span></code></pre></div>
+
+<p>Next you can use the <code>Caller</code> method and capture the filename. We need to
+give this function a <code>1</code> to tell it to skip up a caller. You can read more
+about the function <a href="http://golang.org/pkg/runtime/#Caller">here</a></p>
+
+<div class="highlight"><pre><code class="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+
+<p>The filename will be the path up to the current directory of the file that
+calls this function. The <code>ok</code> is to check if the function call was able to
+find the information requested.</p>
+
+<p>So in practice if you wanted to get a config file up a directory and in a
+config directory you could do the following</p>
+
+<div class="highlight"><pre><code class="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="s">&quot;../config/settings.toml&quot;</span><span class="p">)</span></code></pre></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rubymotion Custom Fonts]]></title>
+    <link href="http://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts/"/>
+    <updated>2013-03-26T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts</id>
+    <content type="html"><![CDATA[<p>In your Rakefile add your font in the app setup.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+  <span class="c1"># App Settings</span>
+  <span class="n">app</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;st-marie.ttf&#39;</span><span class="o">]</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Make sure your st-marie.ttf is in your resources directory</p>
+
+<p>To use in your app do the following</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="s1">&#39;St Marie&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div>
+
+<p>To find your font family name</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain &#39;St Marie&#39;</span></code></pre></div>
+
+<p>To find the font names for a family name</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># Returns array of font names for &#39;St Marie&#39;</span>
+<span class="no">UIFont</span><span class="o">.</span><span class="n">fontNamesForFamilyName</span> <span class="s1">&#39;St Marie&#39;</span></code></pre></div>
+
 ]]></content>
   </entry>
   

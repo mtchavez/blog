@@ -5,48 +5,17 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Blog Archives  | El Chavo</title>
+	<title>Rubymotion Custom Fonts  | El Chavo</title>
 
 <meta name="author" content="El Chavo"> 
 
 <meta name="description" content="
-	
+	Rubymotion Custom Fonts
+	In your Rakefile add your font in the app setup.
 
-
-	
-	
-	2013
-
-
-	Golang Documenting Package Examples
-	
-		Aug 29
-		
-
-
-	    
-	
-
-
-	
-
-
-
-	Golang Timed Function Wrapper
-	
-		Aug  9
-		
-
-
-	    
-	
-
-
-	
-
-
-
-..."> <meta name="keywords" content="">
+Motion::Project::App.setup do |app|
+  # App Settings
+  app.fonts = [&#..."> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -134,80 +103,66 @@ $(document).ready(
 
 </header>
 
-	<div id="content" class="inner">
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Rubymotion Custom Fonts</h2>
+	<div class="entry-content"><p>In your Rakefile add your font in the app setup.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+  <span class="c1"># App Settings</span>
+  <span class="n">app</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;st-marie.ttf&#39;</span><span class="o">]</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Make sure your st-marie.ttf is in your resources directory</p>
+
+<p>To use in your app do the following</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="s1">&#39;St Marie&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div>
+
+<p>To find your font family name</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain &#39;St Marie&#39;</span></code></pre></div>
+
+<p>To find the font names for a family name</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># Returns array of font names for &#39;St Marie&#39;</span>
+<span class="no">UIFont</span><span class="o">.</span><span class="n">fontNamesForFamilyName</span> <span class="s1">&#39;St Marie&#39;</span></code></pre></div>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+<time datetime="" pubdate data-updated="true"></time>
+
+
+</div>
 	
 
 
 	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-	<section class="archives"><h1 class="year">2013</h1>
-
-<article>
-	<h2 class="title"><a href="/2013/08/29/golang-documenting-package-examples/">Golang Documenting Package Examples</a></h2>
-	<div class="meta">
-		<div class="date">Aug 29</div>
-		
-
-
-	    
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
 	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/2013/08/09/golang-timed-function-wrapper/">Golang Timed Function Wrapper</a></h2>
-	<div class="meta">
-		<div class="date">Aug  9</div>
-		
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
 
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/2013/06/04/golang-package-version-flag/">Golang Package Version Flag</a></h2>
-	<div class="meta">
-		<div class="date">Jun  4</div>
-		
-
-
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/2013/05/17/golang-current-file-path/">Golang Current File Path</a></h2>
-	<div class="meta">
-		<div class="date">May 17</div>
-		
-
-
-	    
-	</div>
-</article>
-
-	
-
-
-<article>
-	<h2 class="title"><a href="/2013/03/26/rubymotion-custom-fonts/">Rubymotion Custom Fonts</a></h2>
-	<div class="meta">
-		<div class="date">Mar 26</div>
-		
-
-
-	    
-	</div>
-</article>
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2014
 
