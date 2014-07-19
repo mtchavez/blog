@@ -3,3 +3,12 @@
 {% include disqus.html %}
 {% include google_analytics.html %}
 {% include custom/after_footer.html %}
+
+<script src="{{ root_url }}/javascripts/highlight.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+</script>
