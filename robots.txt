@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://blog.el-chavez.me/sitemap.xml 
