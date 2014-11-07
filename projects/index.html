@@ -1,0 +1,247 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Open Source Projects  | El Chavo</title>
+
+<meta name="author" content="El Chavo">
+
+<meta name="description" content="
+    
+    
+        Personal Projects
+    
+    
+        Ruby
+        
+            
+                CircleCi gem
+                Gem that wraps the C..."> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="El Chavo" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	<link rel="stylesheet" href="/stylesheets/styles/solarized_dark.css">
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">El Chavo</a></h1>
+<h4>Code, Thoughts And Ideas</h4>
+<nav id="main-nav"><ul>
+	<li><a class="" href="/">Blog</a></li>
+	<li><a class="" href="/about">About</a></li>
+  <li><a class="active" href="/projects">Projects</a></li>
+	<li><a class="" href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a class="" href="/">Blog</a></li>
+	<li><a class="" href="/about">About</a></li>
+  <li><a class="active" href="/projects">Projects</a></li>
+	<li><a class="" href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:http://blog.el-chavez.me">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="page">
+    <div class="entry-content"><section class="projects">
+    <div class="row col-lg-12">
+        <h2 class="page-header">Personal Projects</h2>
+    </div>
+    <div class="row col-lg-12">
+        <h3>Ruby</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/mtchavez/circleci" target="_blank">CircleCi gem</a>
+                <div>Gem that wraps the CircleCi API. Built initially to get project statuses for internal dashboards.</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/al_papi" target="_blank">AuthorityLabs Partner API gem</a>
+                <div>Gem built for AuthorityLabs. Used internally for front end site to interact with API. Open sourced for clients to use.</div>
+            </li>
+        </ul>
+        <h3>Go</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/mtchavez/go-hll" target="_blank">Hyper Log Log</a>
+                <div>Hyper Log Log sketch algorithm.</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/go-statsite" target="_blank">Go Statsite</a>
+                <div>Go package to send stats to <a href="https://github.com/armon/statsite">statsite</a></div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/roxy" target="_blank">Riak Proxy</a>
+                <div>
+                    Built as a proxy for riak to respond quickly back to the client put requests. Uses a connection pool to queue up queries
+                    and apply backpressure if needed. Used in production to handle thousands of queries per second.
+                </div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/countmin" target="_blank">Count Min Sketch</a>
+                <div>Count min sketching algorithm to get the minimum number of occurrences of a key in a stream.</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/jumpconshash" target="_blank">Jump Consistent Hash</a>
+                <div>Jump consistent hash from Google whitepaper where it was introduced</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/nnet" target="_blank">Nerual Network</a>
+                <div>Very basic implementation of a nerual network. This is more of a learning experience and not performant or production ready.</div>
+            </li>
+        </ul>
+        <h3>iOS</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/mtchavez/circleci-ios" target="_blank">CircleCi iOS App</a>
+                <div>Open sourced CircleCi iOS app built in Ruby Motion</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/obj-c-helpers" target="_blank">iOS Helpers, Extensions and Libraries</a>
+                <div>Collection of what I've used for iOS development</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/seeking-cities" target="_blank">Seeking Cities</a>
+                <div>Open source iOS app for a Wordpress backed travel blog.</div>
+            </li>
+        </ul>
+        <h3>Erlang</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/mtchavez/bk-tree-erl" target="_blank">BK-Tree</a>
+                <div>BK-Tree in Erlang</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/binary-search-erl" target="_blank">Binary Search Tree</a>
+                <div>Binary search tree</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/trie-erl" target="_blank">Fredkin Trie</a>
+                <div>Trie algorithm</div>
+            </li>
+        </ul>
+        <h3>Python</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/mtchavez/python-package-boilerplate" target="_blank">Python Package Boilerplate</a>
+                <div>Barebones setup for starting a new python package</div>
+            </li>
+        </ul>
+        <h3>Other</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/mtchavez/cog" target="_blank">Cog</a>
+                <div>My updated fork of open source OS X audio player Cog.</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/dashing-circleci" target="_blank">Dashing CircleCi Widget</a>
+                <div>Dashing widget for your project CI build statuses from CircleCi.</div>
+            </li>
+            <li>
+                <a href="https://github.com/mtchavez/ansible-influxdb" target="_blank">Ansible InfluxDB</a>
+                <div>Ansible Galaxy role for InfluxDB</div>
+            </li>
+        </ul>
+    </div>
+</section>
+</div>
+</article>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    El Chavo
+
+<br>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+
+<script src="/javascripts/highlight.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+</body>
+</html>
