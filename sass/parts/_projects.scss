@@ -1,0 +1,31 @@
+section.projects {
+  .page-header {
+    padding-bottom: 9px;
+    margin: 40px 0px 20px;
+    border-bottom: 1px solid #EEE;
+  }
+  a {
+    color: #2A6496;
+  }
+  a:hover, a:focus {
+    color: #2A6496;
+    border-bottom: 1px solid #2A6496;
+  }
+  h3 {
+    color: #960D20;
+
+  }
+  ul {
+    list-style: none;
+
+    li {
+      padding: 5px 0px;
+    }
+
+    li div {
+      font-size: 0.8em;
+      color: #333;
+      padding-left: 10px;
+    }
+  }
+}

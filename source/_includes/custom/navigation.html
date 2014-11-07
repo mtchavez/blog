@@ -1,6 +1,6 @@
 <ul>
 	<li><a class="{% if page.path == 'index.html'%}active{%endif%}" href="{{ root_url }}/">Blog</a></li>
 	<li><a class="{% if page.path == 'about/index.html'%}active{%endif%}" href="{{ root_url }}/about">About</a></li>
-	<!-- <li><a href="{{ root_url }}/portfolio">Portfolio</a></li> -->
+  <li><a class="{% if page.path == 'projects/index.html' %}active{%endif%}" href="{{ root_url }}/projects">Projects</a></li>
 	<li><a class="{% if page.path == 'archives/index.html'%}active{%endif%}" href="{{ root_url }}/archives">Archive</a></li>
 </ul>
