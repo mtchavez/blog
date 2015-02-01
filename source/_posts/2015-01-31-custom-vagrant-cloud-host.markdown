@@ -3,7 +3,7 @@ layout: post
 title: "Custom Vagrant Cloud Versioned Box Host"
 date: 2015-01-31 19:39:05 -0800
 comments: true
-categories: ['vagrant', 'vagrant cloud', 'custom vagrant', 'cloud host', 'vagrant box version']
+categories: ['vagrant', 'vagrant cloud', 'custom vagrant cloud host', 'vagrant box version']
 ---
 
 With the recent addition of [Atlas](https://atlas.hashicorp.com) to the [Hashicorp](https://hashicorp.com)
