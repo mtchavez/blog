@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: go | El Chavo]]></title>
+  <link href="http://blog.el-chavez.me/categories/go/atom.xml" rel="self"/>
+  <link href="http://blog.el-chavez.me/"/>
+  <updated>2015-01-31T22:27:23-08:00</updated>
+  <id>http://blog.el-chavez.me/</id>
+  <author>
+    <name><![CDATA[El Chavo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Golang Documenting Package Examples]]></title>
+    <link href="http://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples/"/>
+    <updated>2013-08-29T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples</id>
+    <content type="html"><![CDATA[<p><a href="http://golang.org/">Go</a> has been gaining a lot of popularity recently. With a
+lot of the success stories centered on the performance gains switching from
+other languages. For me a lot of the smaller features, that shows an attention
+to detail, which makes it enjoyable to code in. These details are also what
+will help the Golang community grow as well. One of these details is the built
+in documentation into the language.</p>
+
+<p>There is a built in <code>go doc</code> command with the language where you can view your
+package documentation locally by running an http server to serve your docs.
+<a href="http://godoc.org/">GoDoc</a> is the main hosting for open source packages that
+will build docs for your package by doing a <code>go get</code> and generating docs.
+Locally you can run <code>go doc</code> from your package to display the docs in your
+terminal.</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
+<span class="err">$</span> <span class="k">go</span> <span class="nx">doc</span>
+<span class="nx">PACKAGE</span> <span class="nx">DOCUMENTATION</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">package</span> <span class="nx">statsite</span>
+    <span class="kn">import</span> <span class="err">“</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span><span class="err">”</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="nx">VARIABLES</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">var</span> <span class="nx">MTypes</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="err">“</span><span class="nx">kv</span><span class="err">”</span><span class="p">,</span>
+    <span class="err">“</span><span class="nx">g</span><span class="err">”</span><span class="p">,</span>
+    <span class="err">“</span><span class="nx">ms</span><span class="err">”</span><span class="p">,</span>
+    <span class="err">“</span><span class="nx">c</span><span class="err">”</span><span class="p">,</span>
+    <span class="err">“</span><span class="nx">s</span><span class="err">”</span><span class="p">,</span>
+<span class="p">}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="nx">TYPES</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">type</span> <span class="nx">Client</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Conn</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Conn</span>
+    <span class="c1">// contains filtered or unexported fields</span>
+<span class="p">}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">NewClient</span><span class="p">(</span><span class="nx">addr</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">client</span> <span class="o">*</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">)</span> <span class="nx">Emit</span><span class="p">(</span><span class="nx">m</span> <span class="nx">Messenger</span><span class="p">)</span> <span class="p">(</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">error</span><span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Client</span><span class="p">)</span> <span class="nx">Emitter</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">ok</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span></code></pre></div></p>
+
+<p>Or you can view all the packages in your <code>$GOSRC</code> directory as well as the
+standard library code in your browser by running <code>godoc -http=:6060</code>. Then
+visit <code>localhost:6060</code> in your browser. This looks the same as golang.org you
+may notice. Click on <code>Packages</code> and find the package you are looking for. This
+all comes built into the language itself.</p>
+
+<p>If you have spent any time using go, browsed the standard library docs, used
+an open source go project you may have notice a <code>Examples</code> in docs. These
+examples are one of the details I mentioned that add to the language and help
+grow a community. <a href="http://golang.org/pkg/time/#pkg-examples">Here</a> is an
+example of the built in <code>time</code> package examples. The novel thing about this is
+it is just the built in examples from the Go source that get generated by <code>go
+doc</code> from the language itself. There is no extra documentation package or
+custom manages site.</p>
+
+<p>So you have an open source project, or some internal go project, that you want
+to make life easier for others to pick up and understand. Lets write an
+example for them to understand how to use your package. Lets say you have a
+fibonacci number generator package. And you want to show someone how to use it
+with an example. Lets add a <code>$GOPATH/src/fib</code> directory with a <code>fib.go</code> main
+package with the following:</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
+  <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
+  <span class="err">“</span><span class="nx">os</span><span class="err">”</span>
+  <span class="err">“</span><span class="nx">strconv</span><span class="err">”</span>
+<span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="nx">n</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">n</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p>Since we’ll be expecting others to use our package we’ll want to test it works
+as well as document how to use it. With examples we can do both in one shot.
+In our same <code>$GOPATH/src/fib</code> directory create a <code>fib_test.go</code> file. Lets add
+our example test.</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
+  <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
+<span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">Example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">output</span> <span class="kt">int</span>
+  <span class="nx">output</span> <span class="p">=</span> <span class="nx">fib</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="err">“</span><span class="nx">Fibonacci</span> <span class="nx">of</span> <span class="o">%</span><span class="nx">v</span> <span class="nx">is</span> <span class="o">%</span><span class="nx">v</span><span class="err">\</span><span class="nx">n</span><span class="err">”</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">output</span><span class="p">)</span>
+  <span class="nx">output</span> <span class="p">=</span> <span class="nx">fib</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="err">“</span><span class="nx">Fibonacci</span> <span class="nx">of</span> <span class="o">%</span><span class="nx">v</span> <span class="nx">is</span> <span class="o">%</span><span class="nx">v</span><span class="err">\</span><span class="nx">n</span><span class="err">”</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">output</span><span class="p">)</span>
+  <span class="c1">// Output:</span>
+  <span class="c1">// Fibonnacci of 10 is 55</span>
+  <span class="c1">// Fibonnacci of 20 is 6765</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p>Now from your <code>fib/</code> directory run <code>go test</code> and you should see some similar
+output:</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+PASS
+ok    fib 0.023s</code></pre></div></p>
+
+<p>This allowed us to both test our fibonacci package and show someone else an
+example how to use it. If the output changed or we broke our package our tests
+should fail as well.</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+— FAIL: Example <span class="o">(</span>80.68us<span class="o">)</span>
+got:
+Fibonacci of 10 is 55
+Fibonacci of 20 is 6765
+want:
+Fibonacci of 10 is 55
+Fibonacci of 20 is 55
+FAIL
+<span class="nb">exit </span>status 1
+FAIL  fib 0.018s</code></pre></div></p>
+
+<p>Simple enough. What if you have a struct where you are calling a function off
+of and want to show how one would use the function. The principal is the same
+except we change our <code>Example()</code> function name in our test. If we change our
+<code>fib.go</code> to this:</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
+  <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
+  <span class="err">“</span><span class="nx">os</span><span class="err">”</span>
+  <span class="err">“</span><span class="nx">strconv</span><span class="err">”</span>
+<span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">type</span> <span class="nx">FibStruct</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">num</span>    <span class="kt">int</span>
+  <span class="nx">result</span> <span class="kt">int</span>
+<span class="p">}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="nx">n</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">n</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">FibStruct</span><span class="p">)</span> <span class="nx">Calculate</span><span class="p">(</span><span class="nx">num</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">f</span><span class="p">.</span><span class="nx">num</span> <span class="p">=</span> <span class="nx">num</span>
+  <span class="nx">f</span><span class="p">.</span><span class="nx">result</span> <span class="p">=</span> <span class="nx">fib</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p>Then we can add an example on how to use our new <code>Calculate()</code> method in
+<code>fib_test.go</code>.</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">f</span> <span class="o">:=</span> <span class="nx">FibStruct</span><span class="p">{}</span>
+  <span class="nx">f</span><span class="p">.</span><span class="nx">Calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="err">“</span><span class="nx">Fibonacci</span> <span class="nx">of</span> <span class="o">%</span><span class="nx">v</span> <span class="nx">is</span> <span class="o">%</span><span class="nx">v</span><span class="err">\</span><span class="nx">n</span><span class="err">”</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">result</span><span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="nx">f</span><span class="p">.</span><span class="nx">Calculate</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="err">“</span><span class="nx">Fibonacci</span> <span class="nx">of</span> <span class="o">%</span><span class="nx">v</span> <span class="nx">is</span> <span class="o">%</span><span class="nx">v</span><span class="err">\</span><span class="nx">n</span><span class="err">”</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
+  <span class="c1">// Output:</span>
+  <span class="c1">// Fibonacci of 10 is 55</span>
+  <span class="c1">// Fibonacci of 20 is 6765</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p>Running the tests again with <code>go test</code> should show everything passing. Last
+part to this is viewing your examples via <code>go doc</code> or on
+<a href="http://godoc.org">GoDoc</a>. You can view this example at <a href="http://godoc.org/github.com/mtchavez/fib-go-example">fib-go-
+example</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
