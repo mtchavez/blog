@@ -3,7 +3,7 @@ layout: post
 title: "Golang Documenting Package Examples"
 date: 2013-08-29 14:40
 comments: true
-#categories: ['Go', 'Golang', 'documentation', 'examples']
+categories: ['Go', 'Golang', 'golang documentation', 'golang examples']
 ---
 
 [Go](http://golang.org/) has been gaining a lot of popularity recently. With a

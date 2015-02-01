@@ -7,7 +7,7 @@
 {% capture was_updated %}{{ updated | size }}{% endcapture %}
 
 
-<time datetime="{{ post.date | date: "%b %-d, %Y" }}" pubdate data-updated="true">{{ post.date | date: "%b %-d, %Y" }}</time>
+<time datetime="{{ date | date: "%b %-d, %Y" }}" pubdate data-updated="true">{{ date | date: "%b %-d, %Y" }}</time>
 
 {% if was_updated != '0' %}
   {% capture updated %}<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated">Updated {{ updated_formatted }}</time>{% endcapture %}
