@@ -3,7 +3,7 @@ layout: post
 title: "Golang Package Version Flag"
 date: 2013-06-04 14:40
 comments: true
-#categories: ['Go', 'Golang', 'flag', 'versioning']
+categories: ['Go', 'Golang', 'golang flag', 'golang versioning']
 ---
 
 So you’ve built your first service using Go and have it deployed out into your

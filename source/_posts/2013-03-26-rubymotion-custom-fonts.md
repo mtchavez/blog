@@ -3,7 +3,7 @@ layout: post
 title: "Rubymotion Custom Fonts"
 date: 2013-03-26 14:40
 comments: true
-#categories: ['rubymotion', 'ruby', 'iOS', 'UIFont', 'fonts']
+categories: ['rubymotion', 'ruby', 'iOS', 'UIFont', 'rubymotion fonts']
 ---
 In your Rakefile add your font in the app setup.
 

@@ -3,7 +3,7 @@ layout: post
 title: "Golang Timed Function Wrapper"
 date: 2013-08-09 14:40
 comments: true
-#categories: ['Go', 'Golang', 'timing', 'interfaces']
+categories: ['Go', 'Golang', 'golang timing', 'golang interfaces']
 ---
 
 Wrote this quick and probably dirty wrapper for timing functions in Go.

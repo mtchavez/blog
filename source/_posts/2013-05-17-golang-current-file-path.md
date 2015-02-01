@@ -3,7 +3,7 @@ layout: post
 title: "Golang Current File Path"
 date: 2013-05-17 14:40
 comments: true
-#categories: ['Go', 'Golang', 'filepath']
+categories: ['Go', 'Golang']
 ---
 
 I recently needed to get the current file absolute path from a go file.
