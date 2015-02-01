@@ -1,0 +1,344 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Custom Vagrant Cloud Versioned Box Host  | El Chavo</title>
+
+<meta name="author" content="El Chavo">
+
+<meta name="description" content="
+	Custom Vagrant Cloud Versioned Box Host
+	With the recent addition of Atlas to the Hashicorp
+arsenal, Vagrant got an update to be integrated into ..."> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="atom.xml" rel="alternate" title="El Chavo" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	<link rel="stylesheet" href="/stylesheets/styles/solarized_dark.css">
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">El Chavo</a></h1>
+<h4>Code, Thoughts And Ideas</h4>
+<nav id="main-nav"><ul>
+	<li><a class="" href="/">Blog</a></li>
+	<li><a class="" href="/about">About</a></li>
+  <li><a class="" href="/projects">Projects</a></li>
+	<li><a class="" href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a class="" href="/">Blog</a></li>
+	<li><a class="" href="/about">About</a></li>
+  <li><a class="" href="/projects">Projects</a></li>
+	<li><a class="" href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:http://blog.el-chavez.me">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Custom Vagrant Cloud Versioned Box Host</h2>
+	<div class="entry-content"><p>With the recent addition of <a href="https://atlas.hashicorp.com">Atlas</a> to the <a href="https://hashicorp.com">Hashicorp</a>
+arsenal, <a href="https://www.vagrantup.com">Vagrant</a> got an update to be integrated into Atlas for hosting your
+VM boxes and handling versioned updates. If you are still looking to have your boxes versioned
+and are hosting them yourself, or your company has them private, you can still achieve versioning
+your boxes with the latest Vagrant (1.7.2) and some manual work. In this post I will go through:</p>
+
+<blockquote>
+  <ol>
+    <li>Basics of building a Virtualbox Vagrant box, just enough to follow along.</li>
+    <li>Building a box metadata file, used to resolve box versions and download URLs.</li>
+    <li>Hooking everything up with your Vagrantfile.</li>
+  </ol>
+</blockquote>
+
+<h2 id="building-a-box">Building a Box</h2>
+
+<p>If this topic is new to you please review <a href="https://docs.vagrantup.com/v2/boxes/base.html">the docs</a>, as this is not a new part
+of vagrant and is provider specific. For simplicity we will use <a href="https://www.virtualbox.org/">VirtualBox</a>
+in these examples.</p>
+
+<p>Please make sure you have the most recent Vagrant (1.7.2) and VirtualBox (4.3.20) beforehand.
+We will need a basic <code>Vagrantfile</code> to start out with, or you can use one of your own.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+
+<span class="c1"># Vagrantfile API/syntax version. Don&#39;t touch unless you know what you&#39;re doing!</span>
+<span class="no">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
+
+<span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="no">VAGRANTFILE_API_VERSION</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="c1"># Base box from Atlas</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s1">&#39;ubuntu/trusty64&#39;</span>
+
+  <span class="c1"># Virtualbox VM settings</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="ss">:virtualbox</span> <span class="k">do</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;custom-box&#39;</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">cpus</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="mi">4096</span>
+    <span class="n">opts</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;modifyvm&#39;</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="s1">&#39;--natdnshostresolver1&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="o">]</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">customize</span> <span class="n">opts</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>This setup gives us an Ubuntu 64-bit Trusty box which will be pulled from Atlas to
+build our VM. Worth noting is the name of our VM in Virtualbox is set to <code>custom-box</code>.
+First we need to bring up the VM so it gets created if it hasn’t already been.</p>
+
+<p><code>
+$ vagrant up --provider virutalbox
+</code></p>
+
+<p>Now we can use Vagrant’s built in tool to build a box from the Virutalbox VM we just created.
+In your terminal go to the directory of your project where your <code>Vagrantfile</code> is and run the
+command to build the box.</p>
+
+<p><code>
+$ vagrant package --base custom-box --output custom-box-0.0.1.box
+</code></p>
+
+<p>This may take some time depending on if you have provisioned your box with anything extra.
+The comman is telling Vagrant to package our box using our Vagrantfile. It will look up a VM
+in Virutalbox named <code>custom-box</code> and we are naming our box <code>custom-box-0.0.1</code>. If this succeeds
+you should see a box in your directory named <code>custom-box-0.0.1.box</code>.</p>
+
+<p>This box file will need to be hosted somewhere so we can point to it in our box manifest file for
+each version of the box. For the rest of the examples I will assume it is hosted on <code>example.com</code>.</p>
+
+<h2 id="box-metadata-json">Box Metadata JSON</h2>
+
+<p>Vagrant, and Vagrant Cloud, uses a <code>metadata.json</code> file to determine where to download the box, the
+versions available for a box and what providers the box is valid for. We will need to manage this
+file in order to host our own versioned boxes outside of Vagrant Cloud. Here is an example
+metadata file:</p>
+
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;custom-box&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;My Custom Ubuntu 14.04 64-bit Box&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;versions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;providers&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;virtualbox&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/vagrant/boxes/custom-box-0.0.1.box&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;checksum_type&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;checksum&quot;</span><span class="p">:</span> <span class="s2">&quot;d955cka5ce671de0be9846956a8954796e8ac42e5166847429951a7301fb7d42&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
+
+<p>This example is defining a box which we have named <code>cusom-box</code>. This is equivalent to the
+base ubuntu box we used which was named <code>ubuntu/trusty64</code>. This could be named a little better
+such as scoped by project or company ie. <code>project-foo/trusty64</code>, <code>company-bar/api-box</code>. This box
+has a description and then an array of all versions for the box.</p>
+
+<p>The versions are where everything is really defined. Each version is a hash that contains: a version number,
+a status, and an array of providers with information on each box specific to the provider. Since we are
+using Virtualbox only we just have a single entry here with the URL of our box and a checksum to apply to
+the download for verification. If we wanted to add extra versions it is as simple as adding another dictionary to our versions list, with
+all the details filled out of course.</p>
+
+<p>This file needs to be hosted somewhere as well so we will assume it is on our <code>example.com</code>
+domain. Once you have your box and metadata file hosted we can now tie this all together with our
+Vagrantfile.</p>
+
+<h2 id="hooking-everything-up">Hooking Everything Up</h2>
+
+<p>Firs we need to update our <code>Vagrantfile</code> so that it knows about our new versioned box we
+are hosting outside of Atlas.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+
+<span class="c1"># Vagrantfile API/syntax version. Don&#39;t touch unless you know what you&#39;re doing!</span>
+<span class="no">VAGRANTFILE_API_VERSION</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
+
+<span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="no">VAGRANTFILE_API_VERSION</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s1">&#39;custom-box&#39;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span> <span class="o">=</span> <span class="s1">&#39;0.0.1&#39;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_url</span> <span class="o">=</span> <span class="s1">&#39;http://example.com/vagrant/boxes/custom/metadata.json&#39;</span>
+
+  <span class="c1"># Virtualbox VM settings</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span> <span class="ss">:virtualbox</span> <span class="k">do</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;custom-box&#39;</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">cpus</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="mi">4096</span>
+    <span class="n">opts</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;modifyvm&#39;</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="s1">&#39;--natdnshostresolver1&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="o">]</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">customize</span> <span class="n">opts</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>The changes to note here is we are using the name of our box now instead of the ubuntu name, <code>custom-box</code>.
+We also have added a <code>config.vm.box_url</code> pointing to our hosted box metadata file and the version
+we want to use is set with <code>config.vm.box_version</code>.</p>
+
+<p>What is happening here for this to work is Vagrant pulls the metadata file down and checks what boxes it
+knows about and matches that to what you have defined in your <code>Vagrantfile</code>. If everything is set up correctly
+we should be able to do a <code>vagrant up</code>, ensuring the VM is already halted. This should pull the new box
+down from the url for the version and provider defined in the metadata file. Now you have your own
+custom hosted and versioned Vagrant box outside of Atlas.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+<time datetime="" pubdate data-updated="true"></time>
+
+
+</div>
+	
+
+<div class="tags">
+
+	vagrantvagrant cloudcustom vagrantcloud hostvagrant box version
+
+</div>
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    El Chavo
+
+<br>
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'el-chavez';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.el-chavez.me/2015/01/31/custom-vagrant-cloud-host/';
+        var disqus_url = 'http://blog.el-chavez.me/2015/01/31/custom-vagrant-cloud-host/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<script src="/javascripts/highlight.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+</body>
+</html>
