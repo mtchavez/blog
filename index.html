@@ -9,19 +9,9 @@
 
 <meta name="author" content="El Chavo">
 
-<meta name="description" content="
-
-
-    
-	
-		
-		
-		
-			Custom Vagrant Cloud Versioned Box Host
-	
-	
-		With the recent addition of Atlas to the Hashicorp
-arsenal, Vagrant got an upda..."> <meta name="keywords" content="">
+<meta name="description" content="With the recent addition of Atlas to the Hashicorp
+arsenal, Vagrant got an update to be integrated into Atlas for hosting your
+VM boxes and handling &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -101,7 +91,7 @@ $(document).ready(
 		<div class="container">
 			<form action="https://www.google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:http://blog.el-chavez.me">
+				<input type="hidden" name="q" value="site:blog.el-chavez.me">
 			</form>
 		</div>
 	</div>
@@ -168,17 +158,15 @@ We will need a basic <code>Vagrantfile</code> to start out with, or you can use 
 build our VM. Worth noting is the name of our VM in Virtualbox is set to <code>custom-box</code>.
 First we need to bring up the VM so it gets created if it hasn’t already been.</p>
 
-<p><code>
-$ vagrant up --provider virutalbox
-</code></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$ vagrant up --provider virutalbox</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Now we can use Vagrant’s built in tool to build a box from the Virutalbox VM we just created.
 In your terminal go to the directory of your project where your <code>Vagrantfile</code> is and run the
 command to build the box.</p>
 
-<p><code>
-$ vagrant package --base custom-box --output custom-box-0.0.1.box
-</code></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$ vagrant package --base custom-box --output custom-box-0.0.1.box</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This may take some time depending on if you have provisioned your box with anything extra.
 The comman is telling Vagrant to package our box using our Vagrantfile. It will look up a VM
@@ -288,7 +276,7 @@ custom hosted and versioned Vagrant box outside of Atlas.</p>
 
 <div class="tags">
 
-	vagrantvagrant cloudcustom vagrantcloud hostvagrant box version
+	<a class='category' href='/categories/cloud-host/'>cloud host</a>, <a class='category' href='/categories/custom-vagrant/'>custom vagrant</a>, <a class='category' href='/categories/vagrant/'>vagrant</a>, <a class='category' href='/categories/vagrant-box-version/'>vagrant box version</a>, <a class='category' href='/categories/vagrant-cloud/'>vagrant cloud</a>
 
 </div>
 
