@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: golang versioning | El Chavo]]></title>
+  <link href="http://blog.el-chavez.me/categories/golang-versioning/atom.xml" rel="self"/>
+  <link href="http://blog.el-chavez.me/"/>
+  <updated>2015-01-31T22:30:40-08:00</updated>
+  <id>http://blog.el-chavez.me/</id>
+  <author>
+    <name><![CDATA[El Chavo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Golang Package Version Flag]]></title>
+    <link href="http://blog.el-chavez.me/2013/06/04/golang-package-version-flag/"/>
+    <updated>2013-06-04T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/06/04/golang-package-version-flag</id>
+    <content type="html"><![CDATA[<p>So you’ve built your first service using Go and have it deployed out into your
+production environment. With cross compiling built into Go it’s easy and almost
+trivial to build a new binary of your code and deploy updates. But what happens
+when you need to know what version of your code is where or how can you easily
+verify your new binary was deployed.</p>
+
+<p>There is a built in library in Go that handles flag parsing, the flag package.
+Using the flag package is straight forward and allows us to use flags to pass
+to our binary to print a version out.</p>
+
+<p>First lets start with a main package that imports the flag package.</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
+    <span class="err">“</span><span class="nx">flag</span><span class="err">”</span>
+    <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
+<span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="err">“</span><span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">main</span><span class="p">()</span><span class="err">”</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p>If you have the file in your $GOROOT as main.go then run <code>go build main.go</code>
+and after running <code>./main</code> you should see:</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./main
+Hello from main<span class="o">()</span></code></pre></div></p>
+
+<p>So what did the <code>flag.Parse()</code> line do for us? Well it actually looked to
+parse any flags passed to the program. Since we did not pass anything it does
+not have to do any work here. Now lets add a version flag to parse so we can
+print the version of our program.</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
+    <span class="err">“</span><span class="nx">flag</span><span class="err">”</span>
+    <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
+    <span class="err">“</span><span class="nx">os</span><span class="err">”</span>
+<span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">const</span> <span class="nx">AppVersion</span> <span class="p">=</span> <span class="err">“</span><span class="mf">1.0.0</span> <span class="nx">beta</span><span class="err">”</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">version</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="err">“</span><span class="nx">v</span><span class="err">”</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="err">“</span><span class="nx">prints</span> <span class="nx">current</span> <span class="nx">app</span> <span class="nx">version</span><span class="err">”</span><span class="p">)</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="k">if</span> <span class="o">*</span><span class="nx">version</span> <span class="p">{</span>
+      <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">AppVersion</span><span class="p">)</span>
+      <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="err">“</span><span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">main</span><span class="p">()</span><span class="err">”</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div></p>
+
+<p>We first start by adding a definition of our version flag. It will be a boolean
+flag with a name of v, a default of false and a description of what our flag means.
+Next we call <code>flag.Parse()</code> to look for any flags passed into our program.
+After parsing our version variable will have a value if we passed a <code>-v</code> to our
+program when running it. Run your program again, this time passing in our <code>-v</code>
+flag, and you should see the version string printed out and the program exist.</p>
+
+<p>Some things to try out:</p>
+
+<ul>
+  <li>What happens if you don’t pass in the <code>-v</code> flag?</li>
+  <li>What is the difference if you change the default value for the flag from false to true?</li>
+  <li>If you pass a flag other than <code>-v</code> what is the output of the program?</li>
+</ul>
+]]></content>
+  </entry>
+  
+</feed>

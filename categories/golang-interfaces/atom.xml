@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: golang interfaces | El Chavo]]></title>
+  <link href="http://blog.el-chavez.me/categories/golang-interfaces/atom.xml" rel="self"/>
+  <link href="http://blog.el-chavez.me/"/>
+  <updated>2015-01-31T22:30:40-08:00</updated>
+  <id>http://blog.el-chavez.me/</id>
+  <author>
+    <name><![CDATA[El Chavo]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Golang Timed Function Wrapper]]></title>
+    <link href="http://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper/"/>
+    <updated>2013-08-09T14:40:00-07:00</updated>
+    <id>http://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper</id>
+    <content type="html"><![CDATA[<p>Wrote this quick and probably dirty wrapper for timing functions in Go.
+<code>TimedReturn</code> returns an <code>interface{}</code> in case a return value is needed
+from whatever you are wrapping.</p>
+
+<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
+  <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
+  <span class="err">“</span><span class="nx">time</span><span class="err">”</span>
+<span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">type</span> <span class="nx">wrapped</span> <span class="kd">func</span><span class="p">()</span>
+<span class="kd">type</span> <span class="nx">wrappedReturn</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">Timed</span><span class="p">(</span><span class="nx">fn</span> <span class="nx">wrapped</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">fn</span><span class="p">()</span>
+  <span class="nx">end</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="err">“</span><span class="nx">Time</span><span class="p">:</span> <span class="o">%</span><span class="nx">d</span><span class="p">,</span> <span class="nx">Key</span><span class="p">:</span> <span class="o">%</span><span class="nx">s</span><span class="err">\</span><span class="nx">n</span><span class="err">”</span><span class="p">,</span> <span class="nx">end</span><span class="o">-</span><span class="nx">start</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+<span class="p">}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">TimedReturn</span><span class="p">(</span><span class="nx">fn</span> <span class="nx">wrappedReturn</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+  <span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">resp</span> <span class="o">:=</span> <span class="nx">fn</span><span class="p">()</span>
+  <span class="nx">end</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="err">“</span><span class="nx">Time</span><span class="p">:</span> <span class="o">%</span><span class="nx">d</span><span class="p">,</span> <span class="nx">Key</span><span class="p">:</span> <span class="o">%</span><span class="nx">s</span><span class="p">]</span><span class="nx">n</span><span class="err">”</span><span class="p">,</span> <span class="nx">end</span><span class="o">-</span><span class="nx">start</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nx">resp</span>
+<span class="p">}&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">fn</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="err">“</span><span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">wrapped</span> <span class="nx">function</span><span class="p">!</span><span class="err">”</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">Timed</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="err">“</span><span class="k">go</span><span class="p">.</span><span class="nx">playground</span><span class="err">”</span><span class="p">)&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="nx">fn2</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">()</span> <span class="kd">interface</span><span class="p">{}</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="err">“</span><span class="nx">Hello</span> <span class="nx">from</span> <span class="nx">wrapped</span> <span class="nx">function</span> <span class="nx">with</span> <span class="k">return</span><span class="p">!</span><span class="err">”</span><span class="p">)</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">returned</span> <span class="o">:=</span> <span class="nx">TimedReturn</span><span class="p">(</span><span class="nx">fn2</span><span class="p">,</span> <span class="err">“</span><span class="k">go</span><span class="p">.</span><span class="nx">playground</span><span class="err">”</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="err">“</span><span class="nx">TimedReturn</span> <span class="nx">got</span><span class="p">:</span><span class="err">”</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.([]</span><span class="kt">int</span><span class="p">))</span>
+<span class="p">}</span></code></pre></div></p>
+]]></content>
+  </entry>
+  
+</feed>
