@@ -149,13 +149,13 @@ We will need a basic <code>Vagrantfile</code> to start out with, or you can use 
 build our VM. Worth noting is the name of our VM in Virtualbox is set to <code>custom-box</code>.
 First we need to bring up the VM so it gets created if it hasn’t already been.</p>
 
-<p><code>$ vagrant up --provider virutalbox</code></p>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vagrant up --provider virutalbox</code></pre></div>
 
 <p>Now we can use Vagrant’s built in tool to build a box from the Virutalbox VM we just created.
 In your terminal go to the directory of your project where your <code>Vagrantfile</code> is and run the
 command to build the box.</p>
 
-<p><code>$ vagrant package --base custom-box --output custom-box-0.0.1.box</code></p>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vagrant package --base custom-box --output custom-box-0.0.1.box</code></pre></div>
 
 <p>This may take some time depending on if you have provisioned your box with anything extra.
 The comman is telling Vagrant to package our box using our Vagrantfile. It will look up a VM
