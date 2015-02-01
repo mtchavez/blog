@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: cloud host | El Chavo]]></title>
-  <link href="http://blog.el-chavez.me/categories/cloud-host/atom.xml" rel="self"/>
+  <title><![CDATA[Category: custom vagrant cloud host | El Chavo]]></title>
+  <link href="http://blog.el-chavez.me/categories/custom-vagrant-cloud-host/atom.xml" rel="self"/>
   <link href="http://blog.el-chavez.me/"/>
-  <updated>2015-01-31T22:05:51-08:00</updated>
+  <updated>2015-01-31T22:09:08-08:00</updated>
   <id>http://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
