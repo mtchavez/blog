@@ -52,10 +52,10 @@ build our VM. Worth noting is the name of our VM in Virtualbox is set to `custom
 First we need to bring up the VM so it gets created if it hasn't already been.
 
 {%highlight bash%}
-$ vagrant up --provider virutalbox
+$ vagrant up --provider virtualbox
 {%endhighlight%}
 
-Now we can use Vagrant's built in tool to build a box from the Virutalbox VM we just created.
+Now we can use Vagrant's built in tool to build a box from the Virtualbox VM we just created.
 In your terminal go to the directory of your project where your `Vagrantfile` is and run the
 command to build the box.
 
@@ -65,7 +65,7 @@ $ vagrant package --base custom-box --output custom-box-0.0.1.box
 
 This may take some time depending on if you have provisioned your box with anything extra.
 The comman is telling Vagrant to package our box using our Vagrantfile. It will look up a VM
-in Virutalbox named `custom-box` and we are naming our box `custom-box-0.0.1`. If this succeeds
+in Virtualbox named `custom-box` and we are naming our box `custom-box-0.0.1`. If this succeeds
 you should see a box in your directory named `custom-box-0.0.1.box`.
 
 This box file will need to be hosted somewhere so we can point to it in our box manifest file for
