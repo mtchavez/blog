@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rubymotion fonts | El Chavo]]></title>
-  <link href="http://blog.el-chavez.me/categories/rubymotion-fonts/atom.xml" rel="self"/>
-  <link href="http://blog.el-chavez.me/"/>
-  <updated>2015-05-22T07:44:19-07:00</updated>
-  <id>http://blog.el-chavez.me/</id>
+  <link href="https://blog.el-chavez.me/categories/rubymotion-fonts/atom.xml" rel="self"/>
+  <link href="https://blog.el-chavez.me/"/>
+  <updated>2015-05-22T08:01:29-07:00</updated>
+  <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rubymotion Custom Fonts]]></title>
-    <link href="http://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts/"/>
+    <link href="https://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts/"/>
     <updated>2013-03-26T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts</id>
+    <id>https://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts</id>
     <content type="html"><![CDATA[<p>In your Rakefile add your font in the app setup.</p>
 
 <p><div class="highlight"><pre><code class="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>

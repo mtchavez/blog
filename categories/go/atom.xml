@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: go | El Chavo]]></title>
-  <link href="http://blog.el-chavez.me/categories/go/atom.xml" rel="self"/>
-  <link href="http://blog.el-chavez.me/"/>
-  <updated>2015-05-22T07:44:19-07:00</updated>
-  <id>http://blog.el-chavez.me/</id>
+  <link href="https://blog.el-chavez.me/categories/go/atom.xml" rel="self"/>
+  <link href="https://blog.el-chavez.me/"/>
+  <updated>2015-05-22T08:01:29-07:00</updated>
+  <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Golang Documenting Package Examples]]></title>
-    <link href="http://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples/"/>
+    <link href="https://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples/"/>
     <updated>2013-08-29T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples</id>
+    <id>https://blog.el-chavez.me/2013/08/29/golang-documenting-package-examples</id>
     <content type="html"><![CDATA[<p><a href="http://golang.org/">Go</a> has been gaining a lot of popularity recently. With a
 lot of the success stories centered on the performance gains switching from
 other languages. For me a lot of the smaller features, that shows an attention
@@ -29,6 +29,7 @@ in documentation into the language.</p>
 package documentation locally by running an http server to serve your docs.
 <a href="http://godoc.org/">GoDoc</a> is the main hosting for open source packages that
 will build docs for your package by doing a <code>go get</code> and generating docs.
+<!--more-->
 Locally you can run <code>go doc</code> from your package to display the docs in your
 terminal.</p>
 
@@ -202,9 +203,9 @@ example</a>.</p>
   
   <entry>
     <title type="html"><![CDATA[Golang Timed Function Wrapper]]></title>
-    <link href="http://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper/"/>
+    <link href="https://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper/"/>
     <updated>2013-08-09T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper</id>
+    <id>https://blog.el-chavez.me/2013/08/09/golang-timed-function-wrapper</id>
     <content type="html"><![CDATA[<p>Wrote this quick and probably dirty wrapper for timing functions in Go.
 <code>TimedReturn</code> returns an <code>interface{}</code> in case a return value is needed
 from whatever you are wrapping.</p>
@@ -254,9 +255,9 @@ from whatever you are wrapping.</p>
   
   <entry>
     <title type="html"><![CDATA[Golang Package Version Flag]]></title>
-    <link href="http://blog.el-chavez.me/2013/06/04/golang-package-version-flag/"/>
+    <link href="https://blog.el-chavez.me/2013/06/04/golang-package-version-flag/"/>
     <updated>2013-06-04T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2013/06/04/golang-package-version-flag</id>
+    <id>https://blog.el-chavez.me/2013/06/04/golang-package-version-flag</id>
     <content type="html"><![CDATA[<p>So you’ve built your first service using Go and have it deployed out into your
 production environment. With cross compiling built into Go it’s easy and almost
 trivial to build a new binary of your code and deploy updates. But what happens
@@ -267,7 +268,8 @@ verify your new binary was deployed.</p>
 Using the flag package is straight forward and allows us to use flags to pass
 to our binary to print a version out.</p>
 
-<p>First lets start with a main package that imports the flag package.</p>
+<p>First lets start with a main package that imports the flag package.
+<!--more--></p>
 
 <p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
@@ -331,9 +333,9 @@ flag, and you should see the version string printed out and the program exist.</
   
   <entry>
     <title type="html"><![CDATA[Golang Current File Path]]></title>
-    <link href="http://blog.el-chavez.me/2013/05/17/golang-current-file-path/"/>
+    <link href="https://blog.el-chavez.me/2013/05/17/golang-current-file-path/"/>
     <updated>2013-05-17T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2013/05/17/golang-current-file-path</id>
+    <id>https://blog.el-chavez.me/2013/05/17/golang-current-file-path</id>
     <content type="html"><![CDATA[<p>I recently needed to get the current file absolute path from a go file.
 You first need to get the runtime package which is a part of Go</p>
 

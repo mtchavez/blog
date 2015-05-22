@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: vagrant box version | El Chavo]]></title>
-  <link href="http://blog.el-chavez.me/categories/vagrant-box-version/atom.xml" rel="self"/>
-  <link href="http://blog.el-chavez.me/"/>
-  <updated>2015-05-22T07:44:19-07:00</updated>
-  <id>http://blog.el-chavez.me/</id>
+  <link href="https://blog.el-chavez.me/categories/vagrant-box-version/atom.xml" rel="self"/>
+  <link href="https://blog.el-chavez.me/"/>
+  <updated>2015-05-22T08:01:29-07:00</updated>
+  <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Custom Vagrant Cloud Versioned Box Host]]></title>
-    <link href="http://blog.el-chavez.me/2015/01/31/custom-vagrant-cloud-host/"/>
+    <link href="https://blog.el-chavez.me/2015/01/31/custom-vagrant-cloud-host/"/>
     <updated>2015-01-31T19:39:05-08:00</updated>
-    <id>http://blog.el-chavez.me/2015/01/31/custom-vagrant-cloud-host</id>
+    <id>https://blog.el-chavez.me/2015/01/31/custom-vagrant-cloud-host</id>
     <content type="html"><![CDATA[<p>With the recent addition of <a href="https://atlas.hashicorp.com">Atlas</a> to the <a href="https://hashicorp.com">Hashicorp</a>
 arsenal, <a href="https://www.vagrantup.com">Vagrant</a> got an update to be integrated into Atlas for hosting your
 VM boxes and handling versioned updates. If you are still looking to have your boxes versioned
@@ -32,7 +32,8 @@ your boxes with the latest Vagrant (1.7.2) and some manual work. In this post I 
   </ol>
 </blockquote>
 
-<h2 id="building-a-box">Building a Box</h2>
+<!--more-->
+<p>## Building a Box</p>
 
 <p>If this topic is new to you please review <a href="https://docs.vagrantup.com/v2/boxes/base.html">the docs</a>, as this is not a new part
 of vagrant and is provider specific. For simplicity we will use <a href="https://www.virtualbox.org/">VirtualBox</a>

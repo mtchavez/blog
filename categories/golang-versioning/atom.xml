@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: golang versioning | El Chavo]]></title>
-  <link href="http://blog.el-chavez.me/categories/golang-versioning/atom.xml" rel="self"/>
-  <link href="http://blog.el-chavez.me/"/>
-  <updated>2015-05-22T07:44:19-07:00</updated>
-  <id>http://blog.el-chavez.me/</id>
+  <link href="https://blog.el-chavez.me/categories/golang-versioning/atom.xml" rel="self"/>
+  <link href="https://blog.el-chavez.me/"/>
+  <updated>2015-05-22T08:01:29-07:00</updated>
+  <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Golang Package Version Flag]]></title>
-    <link href="http://blog.el-chavez.me/2013/06/04/golang-package-version-flag/"/>
+    <link href="https://blog.el-chavez.me/2013/06/04/golang-package-version-flag/"/>
     <updated>2013-06-04T14:40:00-07:00</updated>
-    <id>http://blog.el-chavez.me/2013/06/04/golang-package-version-flag</id>
+    <id>https://blog.el-chavez.me/2013/06/04/golang-package-version-flag</id>
     <content type="html"><![CDATA[<p>So you’ve built your first service using Go and have it deployed out into your
 production environment. With cross compiling built into Go it’s easy and almost
 trivial to build a new binary of your code and deploy updates. But what happens
@@ -28,7 +28,8 @@ verify your new binary was deployed.</p>
 Using the flag package is straight forward and allows us to use flags to pass
 to our binary to print a version out.</p>
 
-<p>First lets start with a main package that imports the flag package.</p>
+<p>First lets start with a main package that imports the flag package.
+<!--more--></p>
 
 <p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
