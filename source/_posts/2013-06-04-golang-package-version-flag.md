@@ -17,6 +17,7 @@ Using the flag package is straight forward and allows us to use flags to pass
 to our binary to print a version out.
 
 First lets start with a main package that imports the flag package.
+<!--more-->
 
 {%highlight go%}
 package main

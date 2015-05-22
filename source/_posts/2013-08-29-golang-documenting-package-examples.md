@@ -17,6 +17,7 @@ There is a built in `go doc` command with the language where you can view your
 package documentation locally by running an http server to serve your docs.
 [GoDoc](http://godoc.org/) is the main hosting for open source packages that
 will build docs for your package by doing a `go get` and generating docs.
+<!--more-->
 Locally you can run `go doc` from your package to display the docs in your
 terminal.
 

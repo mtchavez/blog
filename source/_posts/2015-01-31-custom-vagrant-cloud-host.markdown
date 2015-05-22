@@ -16,6 +16,7 @@ your boxes with the latest Vagrant (1.7.2) and some manual work. In this post I 
 >2. Building a box metadata file, used to resolve box versions and download URLs.
 >3. Hooking everything up with your Vagrantfile.
 
+<!--more-->
 ## Building a Box
 
 If this topic is new to you please review [the docs](https://docs.vagrantup.com/v2/boxes/base.html), as this is not a new part
