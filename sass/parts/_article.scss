@@ -1,6 +1,6 @@
 article{
-	
-	
+
+
 	padding: 30px 0;
 	position: relative;
 	@media screen and (max-width: 620px){
@@ -31,11 +31,11 @@ article{
 		}
 
 	}
-	
+
 	.entry-content{
 		line-height: 1.5;
 		text-align: left;
-		
+
 				a {
  			text-decoration:none;
 			color:#bf0222;
@@ -54,7 +54,7 @@ article{
 			border-bottom:1px solid #bf0222;
 		}
 
-		
+
 		.more-link{
 			display: block;
 			margin-top: 16px;
@@ -68,8 +68,11 @@ article{
 				position: absolute;
 				left: 0;
 			}
-			
+
 		}
+        a.more-link:hover, a.more-link:link, a.more-link:visited {
+            border-bottom: 0px none;
+        }
 		p, blockquote, ul, ol, dl, table, iframe, h1, h2, h3, h4, h5, h6, .video-container{
 			margin-top: 1.5em;
 			margin-bottom: 1.5em;
@@ -87,7 +90,7 @@ article{
 			font-style: italic;
 		}
 		p{
-			margin-top: 10px;	
+			margin-top: 10px;
 		}
 		h2{
 			font-weight: 300;
@@ -101,7 +104,7 @@ article{
 				width: 100%;
 			}
 		}
-		
+
 		img, video{
 			max-width: 100%;
 			height: auto;
@@ -116,7 +119,7 @@ article{
 			box-shadow:0 0 15px rgba(0,0,0,0.35);
 			border-bottom: 0px;
 		}
-		
+
 		blockquote{
 			background: $color-gray04;
 			border-left: 5px solid $color-gray03;
