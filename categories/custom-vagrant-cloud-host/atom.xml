@@ -4,7 +4,7 @@
   <title><![CDATA[Category: custom vagrant cloud host | El Chavo]]></title>
   <link href="https://blog.el-chavez.me/categories/custom-vagrant-cloud-host/atom.xml" rel="self"/>
   <link href="https://blog.el-chavez.me/"/>
-  <updated>2015-05-22T08:01:29-07:00</updated>
+  <updated>2015-06-10T20:00:32-07:00</updated>
   <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -42,7 +42,7 @@ in these examples.</p>
 <p>Please make sure you have the most recent Vagrant (1.7.2) and VirtualBox (4.3.20) beforehand.
 We will need a basic <code>Vagrantfile</code> to start out with, or you can use one of your own.</p>
 
-<p><div class="highlight"><pre><code class="ruby"><span class="c1"># -&lt;em&gt;- mode: ruby -&lt;/em&gt;-</span>
+<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -&lt;em&gt;- mode: ruby -&lt;/em&gt;-</span>
 <span class="c1"># vi: set ft=ruby :&lt;/p&gt;</span>
 
 <span class="o">&lt;</span><span class="n">h1</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;vagrantfile-apisyntax-version-dont-touch-unless-you-know-what-youre-doing&quot;</span><span class="o">&gt;</span><span class="no">Vagrantfile</span> <span class="no">API</span><span class="o">/</span><span class="n">syntax</span> <span class="n">version</span><span class="o">.</span> <span class="no">Don</span><span class="err">’</span><span class="n">t</span> <span class="n">touch</span> <span class="k">unless</span> <span class="n">you</span> <span class="n">know</span> <span class="n">what</span> <span class="n">you</span><span class="err">’</span><span class="n">re</span> <span class="n">doing!</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
@@ -66,13 +66,13 @@ We will need a basic <code>Vagrantfile</code> to start out with, or you can use 
 build our VM. Worth noting is the name of our VM in Virtualbox is set to <code>custom-box</code>.
 First we need to bring up the VM so it gets created if it hasn’t already been.</p>
 
-<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vagrant up –provider virtualbox</code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vagrant up –provider virtualbox</code></pre></div></p>
 
 <p>Now we can use Vagrant’s built in tool to build a box from the Virtualbox VM we just created.
 In your terminal go to the directory of your project where your <code>Vagrantfile</code> is and run the
 command to build the box.</p>
 
-<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vagrant package –base custom-box –output custom-box-0.0.1.box</code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vagrant package –base custom-box –output custom-box-0.0.1.box</code></pre></div></p>
 
 <p>This may take some time depending on if you have provisioned your box with anything extra.
 The comman is telling Vagrant to package our box using our Vagrantfile. It will look up a VM
@@ -89,7 +89,7 @@ versions available for a box and what providers the box is valid for. We will ne
 file in order to host our own versioned boxes outside of Vagrant Cloud. Here is an example
 metadata file:</p>
 
-<p><div class="highlight"><pre><code class="json"><span class="p">{</span>
+<p><div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="err">“name”:</span> <span class="err">“custom-box”,</span>
     <span class="err">“description”:</span> <span class="err">“My</span> <span class="err">Custom</span> <span class="err">Ubuntu</span> <span class="err">14.04</span> <span class="err">64-bit</span> <span class="err">Box”,</span>
     <span class="err">“versions”:</span> <span class="err">[</span>
@@ -128,7 +128,7 @@ Vagrantfile.</p>
 <p>Firs we need to update our <code>Vagrantfile</code> so that it knows about our new versioned box we
 are hosting outside of Atlas.</p>
 
-<p><div class="highlight"><pre><code class="ruby"><span class="c1"># -&lt;em&gt;- mode: ruby -&lt;/em&gt;-</span>
+<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -&lt;em&gt;- mode: ruby -&lt;/em&gt;-</span>
 <span class="c1"># vi: set ft=ruby :&lt;/p&gt;</span>
 
 <span class="o">&lt;</span><span class="n">h1</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;vagrantfile-apisyntax-version-dont-touch-unless-you-know-what-youre-doing-1&quot;</span><span class="o">&gt;</span><span class="no">Vagrantfile</span> <span class="no">API</span><span class="o">/</span><span class="n">syntax</span> <span class="n">version</span><span class="o">.</span> <span class="no">Don</span><span class="err">’</span><span class="n">t</span> <span class="n">touch</span> <span class="k">unless</span> <span class="n">you</span> <span class="n">know</span> <span class="n">what</span> <span class="n">you</span><span class="err">’</span><span class="n">re</span> <span class="n">doing!</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>

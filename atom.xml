@@ -4,7 +4,7 @@
   <title><![CDATA[El Chavo]]></title>
   <link href="https://blog.el-chavez.me/atom.xml" rel="self"/>
   <link href="https://blog.el-chavez.me/"/>
-  <updated>2015-05-22T08:01:29-07:00</updated>
+  <updated>2015-06-10T20:00:32-07:00</updated>
   <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -42,7 +42,7 @@ in these examples.</p>
 <p>Please make sure you have the most recent Vagrant (1.7.2) and VirtualBox (4.3.20) beforehand.
 We will need a basic <code>Vagrantfile</code> to start out with, or you can use one of your own.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="c1"># -*- mode: ruby -*-</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
 
 <span class="c1"># Vagrantfile API/syntax version. Don&#39;t touch unless you know what you&#39;re doing!</span>
@@ -66,13 +66,13 @@ We will need a basic <code>Vagrantfile</code> to start out with, or you can use 
 build our VM. Worth noting is the name of our VM in Virtualbox is set to <code>custom-box</code>.
 First we need to bring up the VM so it gets created if it hasn’t already been.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vagrant up --provider virtualbox</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vagrant up --provider virtualbox</code></pre></div>
 
 <p>Now we can use Vagrant’s built in tool to build a box from the Virtualbox VM we just created.
 In your terminal go to the directory of your project where your <code>Vagrantfile</code> is and run the
 command to build the box.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vagrant package --base custom-box --output custom-box-0.0.1.box</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>vagrant package --base custom-box --output custom-box-0.0.1.box</code></pre></div>
 
 <p>This may take some time depending on if you have provisioned your box with anything extra.
 The comman is telling Vagrant to package our box using our Vagrantfile. It will look up a VM
@@ -89,7 +89,7 @@ versions available for a box and what providers the box is valid for. We will ne
 file in order to host our own versioned boxes outside of Vagrant Cloud. Here is an example
 metadata file:</p>
 
-<div class="highlight"><pre><code class="json"><span class="p">{</span>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;custom-box&quot;</span><span class="p">,</span>
     <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;My Custom Ubuntu 14.04 64-bit Box&quot;</span><span class="p">,</span>
     <span class="nt">&quot;versions&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -128,7 +128,7 @@ Vagrantfile.</p>
 <p>Firs we need to update our <code>Vagrantfile</code> so that it knows about our new versioned box we
 are hosting outside of Atlas.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="c1"># -*- mode: ruby -*-</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
 
 <span class="c1"># Vagrantfile API/syntax version. Don&#39;t touch unless you know what you&#39;re doing!</span>
@@ -181,7 +181,7 @@ will build docs for your package by doing a <code>go get</code> and generating d
 Locally you can run <code>go doc</code> from your package to display the docs in your
 terminal.</p>
 
-<div class="highlight"><pre><code class="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
 <span class="err">$</span> <span class="k">go</span> <span class="nx">doc</span>
 <span class="nx">PACKAGE</span> <span class="nx">DOCUMENTATION</span>
 
@@ -238,7 +238,7 @@ fibonacci number generator package. And you want to show someone how to use it
 with an example. Lets add a <code>$GOPATH/src/fib</code> directory with a <code>fib.go</code> main
 package with the following:</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -258,7 +258,7 @@ as well as document how to use it. With examples we can do both in one shot.
 In our same <code>$GOPATH/src/fib</code> directory create a <code>fib_test.go</code> file. Lets add
 our example test.</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -278,7 +278,7 @@ our example test.</p>
 <p>Now from your <code>fib/</code> directory run <code>go test</code> and you should see some similar
 output:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>go <span class="nb">test</span>
 PASS
 ok    fib 0.023s</code></pre></div>
 
@@ -286,14 +286,14 @@ ok    fib 0.023s</code></pre></div>
 example how to use it. If the output changed or we broke our package our tests
 should fail as well.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>go <span class="nb">test</span>
 --- FAIL: Example <span class="o">(</span>80.68us<span class="o">)</span>
 got:
-Fibonacci of 10 is 55
-Fibonacci of 20 is 6765
+Fibonacci of <span class="m">10</span> is 55
+Fibonacci of <span class="m">20</span> is 6765
 want:
-Fibonacci of 10 is 55
-Fibonacci of 20 is 55
+Fibonacci of <span class="m">10</span> is 55
+Fibonacci of <span class="m">20</span> is 55
 FAIL
 <span class="nb">exit </span>status 1
 FAIL  fib 0.018s</code></pre></div>
@@ -303,7 +303,7 @@ of and want to show how one would use the function. The principal is the same
 except we change our <code>Example()</code> function name in our test. If we change our
 <code>fib.go</code> to this:</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -331,7 +331,7 @@ except we change our <code>Example()</code> function name in our test. If we cha
 <p>Then we can add an example on how to use our new <code>Calculate()</code> method in
 <code>fib_test.go</code>.</p>
 
-<div class="highlight"><pre><code class="go"><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">f</span> <span class="o">:=</span> <span class="nx">FibStruct</span><span class="p">{}</span>
   <span class="nx">f</span><span class="p">.</span><span class="nx">Calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
   <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Fibonacci of %v is %v\n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
@@ -359,7 +359,7 @@ example</a>.</p>
 <code>TimedReturn</code> returns an <code>interface{}</code> in case a return value is needed
 from whatever you are wrapping.</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -421,7 +421,7 @@ to our binary to print a version out.</p>
 <p>First lets start with a main package that imports the flag package.
 <!--more--></p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;flag&quot;</span>
@@ -436,7 +436,7 @@ to our binary to print a version out.</p>
 <p>If you have the file in your $GOROOT as main.go then run <code>go build main.go</code>
 and after running <code>./main</code> you should see:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./main
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./main
 Hello from main<span class="o">()</span></code></pre></div>
 
 <p>So what did the <code>flag.Parse()</code> line do for us? Well it actually looked to
@@ -444,7 +444,7 @@ parse any flags passed to the program. Since we did not pass anything it does
 not have to do any work here. Now lets add a version flag to parse so we can
 print the version of our program.</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&quot;flag&quot;</span>
@@ -489,13 +489,13 @@ flag, and you should see the version string printed out and the program exist.</
     <content type="html"><![CDATA[<p>I recently needed to get the current file absolute path from a go file.
 You first need to get the runtime package which is a part of Go</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">import</span> <span class="s">&quot;runtime&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="s">&quot;runtime&quot;</span></code></pre></div>
 
 <p>Next you can use the <code>Caller</code> method and capture the filename. We need to
 give this function a <code>1</code> to tell it to skip up a caller. You can read more
 about the function <a href="http://golang.org/pkg/runtime/#Caller">here</a></p>
 
-<div class="highlight"><pre><code class="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
 
 <p>The filename will be the path up to the current directory of the file that
 calls this function. The <code>ok</code> is to check if the function call was able to
@@ -504,7 +504,7 @@ find the information requested.</p>
 <p>So in practice if you wanted to get a config file up a directory and in a
 config directory you could do the following</p>
 
-<div class="highlight"><pre><code class="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="s">&quot;../config/settings.toml&quot;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="s">&quot;../config/settings.toml&quot;</span><span class="p">)</span></code></pre></div>
 
 ]]></content>
   </entry>
@@ -516,7 +516,7 @@ config directory you could do the following</p>
     <id>https://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts</id>
     <content type="html"><![CDATA[<p>In your Rakefile add your font in the app setup.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
   <span class="c1"># App Settings</span>
   <span class="n">app</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;st-marie.ttf&#39;</span><span class="o">]</span>
 <span class="k">end</span></code></pre></div>
@@ -525,15 +525,15 @@ config directory you could do the following</p>
 
 <p>To use in your app do the following</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="s1">&#39;St Marie&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="s1">&#39;St Marie&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div>
 
 <p>To find your font family name</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain &#39;St Marie&#39;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain &#39;St Marie&#39;</span></code></pre></div>
 
 <p>To find the font names for a family name</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="c1"># Returns array of font names for &#39;St Marie&#39;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Returns array of font names for &#39;St Marie&#39;</span>
 <span class="no">UIFont</span><span class="o">.</span><span class="n">fontNamesForFamilyName</span> <span class="s1">&#39;St Marie&#39;</span></code></pre></div>
 
 ]]></content>

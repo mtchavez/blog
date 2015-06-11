@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rubymotion | El Chavo]]></title>
   <link href="https://blog.el-chavez.me/categories/rubymotion/atom.xml" rel="self"/>
   <link href="https://blog.el-chavez.me/"/>
-  <updated>2015-05-22T08:01:29-07:00</updated>
+  <updated>2015-06-10T20:00:32-07:00</updated>
   <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -20,7 +20,7 @@
     <id>https://blog.el-chavez.me/2013/03/26/rubymotion-custom-fonts</id>
     <content type="html"><![CDATA[<p>In your Rakefile add your font in the app setup.</p>
 
-<p><div class="highlight"><pre><code class="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
   <span class="c1"># App Settings</span>
   <span class="n">app</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="o">[</span><span class="err">‘</span><span class="n">st</span><span class="o">-</span><span class="n">marie</span><span class="o">.</span><span class="n">ttf</span><span class="err">’</span><span class="o">]</span>
 <span class="k">end</span></code></pre></div></p>
@@ -29,15 +29,15 @@
 
 <p>To use in your app do the following</p>
 
-<p><div class="highlight"><pre><code class="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="err">‘</span><span class="no">St</span> <span class="no">Marie</span><span class="err">’</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="err">‘</span><span class="no">St</span> <span class="no">Marie</span><span class="err">’</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div></p>
 
 <p>To find your font family name</p>
 
-<p><div class="highlight"><pre><code class="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain ‘St Marie’</span></code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain ‘St Marie’</span></code></pre></div></p>
 
 <p>To find the font names for a family name</p>
 
-<p><div class="highlight"><pre><code class="ruby"><span class="c1"># Returns array of font names for ‘St Marie’</span>
+<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Returns array of font names for ‘St Marie’</span>
 <span class="no">UIFont</span><span class="o">.</span><span class="n">fontNamesForFamilyName</span> <span class="err">‘</span><span class="no">St</span> <span class="no">Marie</span><span class="err">’</span></code></pre></div></p>
 ]]></content>
   </entry>

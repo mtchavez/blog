@@ -4,7 +4,7 @@
   <title><![CDATA[Category: golang interfaces | El Chavo]]></title>
   <link href="https://blog.el-chavez.me/categories/golang-interfaces/atom.xml" rel="self"/>
   <link href="https://blog.el-chavez.me/"/>
-  <updated>2015-05-22T08:01:29-07:00</updated>
+  <updated>2015-06-10T20:00:32-07:00</updated>
   <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -22,7 +22,7 @@
 <code>TimedReturn</code> returns an <code>interface{}</code> in case a return value is needed
 from whatever you are wrapping.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
   <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>

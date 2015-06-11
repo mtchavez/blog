@@ -136,11 +136,10 @@ to our binary to print a version out.</p>
 
 
 
+<time datetime="" pubdate data-updated="true"></time>
 
-<time datetime="Jun 4, 2013" pubdate data-updated="true">Jun 4, 2013</time>
 
-
-</div>
+<time class='entry-date' datetime='2013-06-04T14:40:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:40 pm</span></time></div>
 	
 
 <div class="tags">
@@ -165,13 +164,13 @@ to our binary to print a version out.</p>
 		<p>I recently needed to get the current file absolute path from a go file.
 You first need to get the runtime package which is a part of Go</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">import</span> <span class="s">&quot;runtime&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="s">&quot;runtime&quot;</span></code></pre></div>
 
 <p>Next you can use the <code>Caller</code> method and capture the filename. We need to
 give this function a <code>1</code> to tell it to skip up a caller. You can read more
 about the function <a href="http://golang.org/pkg/runtime/#Caller">here</a></p>
 
-<div class="highlight"><pre><code class="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
 
 <p>The filename will be the path up to the current directory of the file that
 calls this function. The <code>ok</code> is to check if the function call was able to
@@ -180,7 +179,7 @@ find the information requested.</p>
 <p>So in practice if you wanted to get a config file up a directory and in a
 config directory you could do the following</p>
 
-<div class="highlight"><pre><code class="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="s">&quot;../config/settings.toml&quot;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="s">&quot;../config/settings.toml&quot;</span><span class="p">)</span></code></pre></div>
 
 
 		
@@ -197,11 +196,10 @@ config directory you could do the following</p>
 
 
 
+<time datetime="" pubdate data-updated="true"></time>
 
-<time datetime="May 17, 2013" pubdate data-updated="true">May 17, 2013</time>
 
-
-</div>
+<time class='entry-date' datetime='2013-05-17T14:40:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:40 pm</span></time></div>
 	
 
 <div class="tags">
@@ -225,7 +223,7 @@ config directory you could do the following</p>
 	<div class="entry-content">
 		<p>In your Rakefile add your font in the app setup.</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Motion</span><span class="o">::</span><span class="no">Project</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">setup</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
   <span class="c1"># App Settings</span>
   <span class="n">app</span><span class="o">.</span><span class="n">fonts</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;st-marie.ttf&#39;</span><span class="o">]</span>
 <span class="k">end</span></code></pre></div>
@@ -234,15 +232,15 @@ config directory you could do the following</p>
 
 <p>To use in your app do the following</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="s1">&#39;St Marie&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my_font</span> <span class="o">=</span> <span class="no">UIFont</span><span class="o">.</span><span class="n">fontWithName</span> <span class="s1">&#39;St Marie&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="mi">32</span></code></pre></div>
 
 <p>To find your font family name</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain &#39;St Marie&#39;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">UIFont</span><span class="o">.</span><span class="n">familyNames</span><span class="o">.</span><span class="n">sort</span> <span class="c1"># Should contain &#39;St Marie&#39;</span></code></pre></div>
 
 <p>To find the font names for a family name</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="c1"># Returns array of font names for &#39;St Marie&#39;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Returns array of font names for &#39;St Marie&#39;</span>
 <span class="no">UIFont</span><span class="o">.</span><span class="n">fontNamesForFamilyName</span> <span class="s1">&#39;St Marie&#39;</span></code></pre></div>
 
 
@@ -260,11 +258,10 @@ config directory you could do the following</p>
 
 
 
+<time datetime="" pubdate data-updated="true"></time>
 
-<time datetime="Mar 26, 2013" pubdate data-updated="true">Mar 26, 2013</time>
 
-
-</div>
+<time class='entry-date' datetime='2013-03-26T14:40:00-07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:40 pm</span></time></div>
 	
 
 <div class="tags">

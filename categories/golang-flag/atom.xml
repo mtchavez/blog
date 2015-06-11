@@ -4,7 +4,7 @@
   <title><![CDATA[Category: golang flag | El Chavo]]></title>
   <link href="https://blog.el-chavez.me/categories/golang-flag/atom.xml" rel="self"/>
   <link href="https://blog.el-chavez.me/"/>
-  <updated>2015-05-22T08:01:29-07:00</updated>
+  <updated>2015-06-10T20:00:32-07:00</updated>
   <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -31,7 +31,7 @@ to our binary to print a version out.</p>
 <p>First lets start with a main package that imports the flag package.
 <!--more--></p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
     <span class="err">“</span><span class="nx">flag</span><span class="err">”</span>
@@ -46,7 +46,7 @@ to our binary to print a version out.</p>
 <p>If you have the file in your $GOROOT as main.go then run <code>go build main.go</code>
 and after running <code>./main</code> you should see:</p>
 
-<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./main
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./main
 Hello from main<span class="o">()</span></code></pre></div></p>
 
 <p>So what did the <code>flag.Parse()</code> line do for us? Well it actually looked to
@@ -54,7 +54,7 @@ parse any flags passed to the program. Since we did not pass anything it does
 not have to do any work here. Now lets add a version flag to parse so we can
 print the version of our program.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
     <span class="err">“</span><span class="nx">flag</span><span class="err">”</span>

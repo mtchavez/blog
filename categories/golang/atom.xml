@@ -4,7 +4,7 @@
   <title><![CDATA[Category: golang | El Chavo]]></title>
   <link href="https://blog.el-chavez.me/categories/golang/atom.xml" rel="self"/>
   <link href="https://blog.el-chavez.me/"/>
-  <updated>2015-05-22T08:01:29-07:00</updated>
+  <updated>2015-06-10T20:00:32-07:00</updated>
   <id>https://blog.el-chavez.me/</id>
   <author>
     <name><![CDATA[El Chavo]]></name>
@@ -33,7 +33,7 @@ will build docs for your package by doing a <code>go get</code> and generating d
 Locally you can run <code>go doc</code> from your package to display the docs in your
 terminal.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
 <span class="err">$</span> <span class="k">go</span> <span class="nx">doc</span>
 <span class="nx">PACKAGE</span> <span class="nx">DOCUMENTATION</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
@@ -85,7 +85,7 @@ fibonacci number generator package. And you want to show someone how to use it
 with an example. Lets add a <code>$GOPATH/src/fib</code> directory with a <code>fib.go</code> main
 package with the following:</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
   <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
@@ -105,7 +105,7 @@ as well as document how to use it. With examples we can do both in one shot.
 In our same <code>$GOPATH/src/fib</code> directory create a <code>fib_test.go</code> file. Lets add
 our example test.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
   <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
@@ -125,7 +125,7 @@ our example test.</p>
 <p>Now from your <code>fib/</code> directory run <code>go test</code> and you should see some similar
 output:</p>
 
-<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>go <span class="nb">test</span>
 PASS
 ok    fib 0.023s</code></pre></div></p>
 
@@ -133,14 +133,14 @@ ok    fib 0.023s</code></pre></div></p>
 example how to use it. If the output changed or we broke our package our tests
 should fail as well.</p>
 
-<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>go <span class="nb">test</span>
 — FAIL: Example <span class="o">(</span>80.68us<span class="o">)</span>
 got:
-Fibonacci of 10 is 55
-Fibonacci of 20 is 6765
+Fibonacci of <span class="m">10</span> is 55
+Fibonacci of <span class="m">20</span> is 6765
 want:
-Fibonacci of 10 is 55
-Fibonacci of 20 is 55
+Fibonacci of <span class="m">10</span> is 55
+Fibonacci of <span class="m">20</span> is 55
 FAIL
 <span class="nb">exit </span>status 1
 FAIL  fib 0.018s</code></pre></div></p>
@@ -150,7 +150,7 @@ of and want to show how one would use the function. The principal is the same
 except we change our <code>Example()</code> function name in our test. If we change our
 <code>fib.go</code> to this:</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">package</span> <span class="nx">fib</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
@@ -180,7 +180,7 @@ except we change our <code>Example()</code> function name in our test. If we cha
 <p>Then we can add an example on how to use our new <code>Calculate()</code> method in
 <code>fib_test.go</code>.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">f</span> <span class="o">:=</span> <span class="nx">FibStruct</span><span class="p">{}</span>
@@ -210,7 +210,7 @@ example</a>.</p>
 <code>TimedReturn</code> returns an <code>interface{}</code> in case a return value is needed
 from whatever you are wrapping.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
   <span class="err">“</span><span class="nx">fmt</span><span class="err">”</span>
@@ -271,7 +271,7 @@ to our binary to print a version out.</p>
 <p>First lets start with a main package that imports the flag package.
 <!--more--></p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
     <span class="err">“</span><span class="nx">flag</span><span class="err">”</span>
@@ -286,7 +286,7 @@ to our binary to print a version out.</p>
 <p>If you have the file in your $GOROOT as main.go then run <code>go build main.go</code>
 and after running <code>./main</code> you should see:</p>
 
-<p><div class="highlight"><pre><code class="bash"><span class="nv">$ </span>./main
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./main
 Hello from main<span class="o">()</span></code></pre></div></p>
 
 <p>So what did the <code>flag.Parse()</code> line do for us? Well it actually looked to
@@ -294,7 +294,7 @@ parse any flags passed to the program. Since we did not pass anything it does
 not have to do any work here. Now lets add a version flag to parse so we can
 print the version of our program.</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nx">p</span><span class="p">&gt;</span><span class="kn">import</span> <span class="p">(</span>
     <span class="err">“</span><span class="nx">flag</span><span class="err">”</span>
@@ -339,13 +339,13 @@ flag, and you should see the version string printed out and the program exist.</
     <content type="html"><![CDATA[<p>I recently needed to get the current file absolute path from a go file.
 You first need to get the runtime package which is a part of Go</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="kn">import</span> <span class="err">“</span><span class="nx">runtime</span><span class="err">”</span></code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="err">“</span><span class="nx">runtime</span><span class="err">”</span></code></pre></div></p>
 
 <p>Next you can use the <code>Caller</code> method and capture the filename. We need to
 give this function a <code>1</code> to tell it to skip up a caller. You can read more
 about the function <a href="http://golang.org/pkg/runtime/#Caller">here</a></p>
 
-<p><div class="highlight"><pre><code class="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div></p>
 
 <p>The filename will be the path up to the current directory of the file that
 calls this function. The <code>ok</code> is to check if the function call was able to
@@ -354,7 +354,7 @@ find the information requested.</p>
 <p>So in practice if you wanted to get a config file up a directory and in a
 config directory you could do the following</p>
 
-<p><div class="highlight"><pre><code class="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="err">“</span><span class="p">..</span><span class="o">/</span><span class="nx">config</span><span class="o">/</span><span class="nx">settings</span><span class="p">.</span><span class="nx">toml</span><span class="err">”</span><span class="p">)</span></code></pre></div></p>
+<p><div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="err">“</span><span class="p">..</span><span class="o">/</span><span class="nx">config</span><span class="o">/</span><span class="nx">settings</span><span class="p">.</span><span class="nx">toml</span><span class="err">”</span><span class="p">)</span></code></pre></div></p>
 ]]></content>
   </entry>
   

@@ -117,7 +117,7 @@ will build docs for your package by doing a <code>go get</code> and generating d
 Locally you can run <code>go doc</code> from your package to display the docs in your
 terminal.</p>
 
-<div class="highlight"><pre><code class="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="err">$</span> <span class="nx">cd</span> <span class="err">$</span><span class="nx">GOPATH</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">mtchavez</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="nx">statsite</span><span class="o">/</span><span class="nx">statsite</span>
 <span class="err">$</span> <span class="k">go</span> <span class="nx">doc</span>
 <span class="nx">PACKAGE</span> <span class="nx">DOCUMENTATION</span>
 
@@ -174,7 +174,7 @@ fibonacci number generator package. And you want to show someone how to use it
 with an example. Lets add a <code>$GOPATH/src/fib</code> directory with a <code>fib.go</code> main
 package with the following:</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -194,7 +194,7 @@ as well as document how to use it. With examples we can do both in one shot.
 In our same <code>$GOPATH/src/fib</code> directory create a <code>fib_test.go</code> file. Lets add
 our example test.</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -214,7 +214,7 @@ our example test.</p>
 <p>Now from your <code>fib/</code> directory run <code>go test</code> and you should see some similar
 output:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>go <span class="nb">test</span>
 PASS
 ok    fib 0.023s</code></pre></div>
 
@@ -222,14 +222,14 @@ ok    fib 0.023s</code></pre></div>
 example how to use it. If the output changed or we broke our package our tests
 should fail as well.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>go <span class="nb">test</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>go <span class="nb">test</span>
 --- FAIL: Example <span class="o">(</span>80.68us<span class="o">)</span>
 got:
-Fibonacci of 10 is 55
-Fibonacci of 20 is 6765
+Fibonacci of <span class="m">10</span> is 55
+Fibonacci of <span class="m">20</span> is 6765
 want:
-Fibonacci of 10 is 55
-Fibonacci of 20 is 55
+Fibonacci of <span class="m">10</span> is 55
+Fibonacci of <span class="m">20</span> is 55
 FAIL
 <span class="nb">exit </span>status 1
 FAIL  fib 0.018s</code></pre></div>
@@ -239,7 +239,7 @@ of and want to show how one would use the function. The principal is the same
 except we change our <code>Example()</code> function name in our test. If we change our
 <code>fib.go</code> to this:</p>
 
-<div class="highlight"><pre><code class="go"><span class="kn">package</span> <span class="nx">fib</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">fib</span>
 
 <span class="kn">import</span> <span class="p">(</span>
   <span class="s">&quot;fmt&quot;</span>
@@ -267,7 +267,7 @@ except we change our <code>Example()</code> function name in our test. If we cha
 <p>Then we can add an example on how to use our new <code>Calculate()</code> method in
 <code>fib_test.go</code>.</p>
 
-<div class="highlight"><pre><code class="go"><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nx">ExampleFibStruct_Calculate</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">f</span> <span class="o">:=</span> <span class="nx">FibStruct</span><span class="p">{}</span>
   <span class="nx">f</span><span class="p">.</span><span class="nx">Calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
   <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Fibonacci of %v is %v\n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span>
@@ -295,11 +295,10 @@ example</a>.</p>
 
 
 
+<time datetime="" pubdate data-updated="true"></time>
 
-<time datetime="Aug 29, 2013" pubdate data-updated="true">Aug 29, 2013</time>
 
-
-</div>
+<time class='entry-date' datetime='2013-08-29T14:40:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:40 pm</span></time></div>
 	
 
 <div class="tags">
