@@ -254,6 +254,119 @@ from whatever you are wrapping.</p>
 </div>
 </article>
 
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/2013/06/04/golang-package-version-flag/">
+		
+			Golang Package Version Flag</a>
+	</h2>
+	<div class="entry-content">
+		<p>So you’ve built your first service using Go and have it deployed out into your
+production environment. With cross compiling built into Go it’s easy and almost
+trivial to build a new binary of your code and deploy updates. But what happens
+when you need to know what version of your code is where or how can you easily
+verify your new binary was deployed.</p>
+
+<p>There is a built in library in Go that handles flag parsing, the flag package.
+Using the flag package is straight forward and allows us to use flags to pass
+to our binary to print a version out.</p>
+
+<p>First lets start with a main package that imports the flag package.
+
+		
+		<a href="/2013/06/04/golang-package-version-flag/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="postdate">
+
+
+
+
+
+
+
+<time datetime="" pubdate data-updated="true"></time>
+
+
+<time class='entry-date' datetime='2013-06-04T14:40:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span></time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/categories/go/'>go</a>, <a class='category' href='/categories/golang/'>golang</a>, <a class='category' href='/categories/golang-flag/'>golang flag</a>, <a class='category' href='/categories/golang-versioning/'>golang versioning</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/2013/05/17/golang-current-file-path/">
+		
+			Golang Current File Path</a>
+	</h2>
+	<div class="entry-content">
+		<p>I recently needed to get the current file absolute path from a go file.
+You first need to get the runtime package which is a part of Go</p>
+
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="s">&quot;runtime&quot;</span></code></pre></div>
+
+<p>Next you can use the <code>Caller</code> method and capture the filename. We need to
+give this function a <code>1</code> to tell it to skip up a caller. You can read more
+about the function <a href="http://golang.org/pkg/runtime/#Caller">here</a></p>
+
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">_</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre></div>
+
+<p>The filename will be the path up to the current directory of the file that
+calls this function. The <code>ok</code> is to check if the function call was able to
+find the information requested.</p>
+
+<p>So in practice if you wanted to get a config file up a directory and in a
+config directory you could do the following</p>
+
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="nx">filepath</span> <span class="o">:=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">filename</span><span class="p">),</span> <span class="s">&quot;../config/settings.toml&quot;</span><span class="p">)</span></code></pre></div>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="postdate">
+
+
+
+
+
+
+
+<time datetime="" pubdate data-updated="true"></time>
+
+
+<time class='entry-date' datetime='2013-05-17T14:40:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span></time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/categories/go/'>go</a>, <a class='category' href='/categories/golang/'>golang</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
 <nav id="pagenavi">
     
     
