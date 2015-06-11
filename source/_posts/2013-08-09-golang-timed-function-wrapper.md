@@ -10,6 +10,7 @@ Wrote this quick and probably dirty wrapper for timing functions in Go.
 `TimedReturn` returns an `interface{}` in case a return value is needed
 from whatever you are wrapping.
 
+<!--more-->
 {%highlight go%}
 package main
 
