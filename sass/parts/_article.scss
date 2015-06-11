@@ -58,17 +58,8 @@ article{
 		.more-link{
 			display: block;
 			margin-top: 16px;
-			padding-left: 30px;
 			position: relative;
 			border-bottom: 0px;
-			&:before{
-				content: "\f061";
-				font: 1.3em $font-icon;
-				line-height: 1.6em;
-				position: absolute;
-				left: 0;
-			}
-
 		}
         a.more-link:hover, a.more-link:link, a.more-link:visited {
             border-bottom: 0px none;
